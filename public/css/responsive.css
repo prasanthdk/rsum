@@ -1,0 +1,38 @@
+@media(max-width:767px) {
+    .login-content-inner {
+        background-color: #fff;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 3px;
+    }
+
+    .template-content-inner {
+        background-color: #F1F1F1;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 3px;
+        box-shadow: 10px;
+    }
+
+    .login-title h3 {
+        text-align: center !important;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 15px;
+        color: #333333;
+        font-size: 16px;
+    }
+    .login-form {
+    padding: 0px;
+}
+.alnpadding
+{
+    padding:20px 20px 10px 0px;
+}       
+.text-right
+    {
+        padding:10px 14px;
+        text-align: left !important;
+    }
+}

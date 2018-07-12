@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -24,6 +25,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
     <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="css/imageuploadify.min.css" rel="stylesheet">
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -49,53 +51,36 @@
         <!--==========================
           Login Form Start
           ==========================-->
-        <section class="login-page">
+        <section class="img_upload-page">
             <div class="container">
-                <div class="row login-content">
+                <div class="row img_upload-content">
                     <div class="col-md-12 col-sm-12">
-                        <div class="login-content-inner">
-                            <div class="login-title">
-                                <h3 class="text-center">Welcome back! Please Login.</h3>
+                        <div class="img_upload-title">
+                            <h3 class="text-center">Choose a Options</h3>
+                        </div>
+                        <div class="img_upload-inner">
+                           <!--  <div class="upload_header text-center">
+                                Upload my resume
+                            </div> -->
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <form>
+                                            <input type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                                        </form>
+                                        <div class="text-center upload_info">
+                                            <p>Or drag and drop files into this box </p>
+                                            <p class="highlight"> Acceptable file types </p>
+                                            <p> DOC, DOCX, PDF, ODT, TXT, RTF, HTM </p>
+                                        </div>
+                                    </div>
+                                </div> 
                             </div>
-                            <form id="form" class="login-form" method="post" action="#" autocomplete="off">
-                                <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" name="email" id="email" class="form-control" />
+                             <div class="row">
+                                <div class="col-md-12 col-sm-12 text-center wow fadeInUp">
+                                    <a href="#" class="btn btn-primary bggray pull-left">Back</a>
+                                    <a href="#" class="btn btn-primary bgorange pull-right">Next</a>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <label for="password">Password</label>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 text-right">
-                                            <a href="#">Forgot your password?</a>
-                                        </div>
-                                    </div>
-                                    <input type="password" name="password" id="password" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="checkbox checkbox-primary">
-                                                <input id="checkbox" type="checkbox">
-                                                <label for="checkbox">
-                                                    Keep me logged in
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row text-center">
-                                        <div class="col-md-12 col-sm-12">
-                                            <label>Don't have a account?<span><a href="#"> sign up</a></span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,40 +146,13 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
     <!-- Contact Form JavaScript File -->
     <script src="contactform/contactform.js"></script>
-
+    <script type="text/javascript" src="js/imageuploadify.min.js"></script>
     <!-- Template Main Javascript File -->
     <script src="js/main.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#form").validate({
-                rules: {
-                    "email": {
-                        required: true,
-                        email: true
-                    },
-                    "password": {
-                        required: true,
-                        regexp: /^[A-Za-z\d]+$/i
-                    }
-                },
-                messages: {
-                    "email": {
-                        required: "Please enter an email",
-                        email: "Email is invalid"
-                    },
-                    "password": {
-                        required: "Please enter the password",
-                        password: "password is incorrect"
-                    }
-                },
-                submitHandler: function (form) { // for demo
-                    alert('valid form submitted'); // for demo
-                    return false; // for demo
-                }
-            });
-
-        });
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('input[type="file"]').imageuploadify();
+        })
     </script>
 </body>
 </html>

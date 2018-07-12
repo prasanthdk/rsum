@@ -1196,11 +1196,15 @@ body.mobile-nav-active {
     }
 
     .list-inline li {
-        display: block;
+        display: inline;
     }
 
         .list-inline li a {
             border-right: none;
+        }
+        #footer .row
+        {
+            text-align: center;
         }
 }
 /*Login*/
@@ -1437,15 +1441,15 @@ body.mobile-nav-active {
     }
 
 .radio-primary input[type="radio"] + label::after {
-    background-color: #428bca;
+    background-color: #FF7F00;
 }
 
 .radio-primary input[type="radio"]:checked + label::before {
-    border-color: #428bca;
+    border-color: #FF7F00;
 }
 
 .radio-primary input[type="radio"]:checked + label::after {
-    background-color: #428bca;
+    background-color: #FF7F00;
 }
 
 .radio-danger input[type="radio"] + label::after {
@@ -1517,10 +1521,7 @@ a {
         color: #0077CF;
     }
 
-.buttonappend {
-    top: 0px;
-    left: 57px;
-    position: absolute;
+.buttonappend {    
     margin-top: 50px;
     padding: 10px;
     display:none;
@@ -1595,12 +1596,180 @@ a {
 .login-form {
     padding: 0px 120px;
 }
+.selectres-form {
+
+}
+.existres-form{
+padding:30px 100px;
+}
+.alnpadding{
+    padding:20px 20px 10px 80px;
+}
+.alnborder{    
+    border:1px solid #003FBE;
+}
+
+.padding30{
+    padding:30px;
+}
+.padding20{
+    padding:30px;
+}
+.width150{
+    width:150px;
+}
 .bgwhite{
     background-color:white;
 }
 .bgorange{
     background-color:orange;
+    padding: 5px 50px;
+    border-radius: 50px;
+    outline: 0;   
 }
+.bggray{
+    background-color:#e3e4eb !important;
+    border-color: #bdbec3 !important;
+    padding: 5px 50px;
+    border-radius: 50px;
+    outline: 0;
+    color: #333;
+}
+.upld{
+    text-align:center;
+}
+.upld .fa-5x{
+    color:#0E64AF !important;
+}
+.divid {
+  position: relative;
+  overflow: hidden;
+}
+.upld input {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+.template-content-inner .thumbnail {
+    position:relative;
+    overflow:hidden;
+}
+ 
+.template-content-inner .caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(66, 139, 202, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+}
+.template-content-inner .btn
+{
+    border-radius: 0px;
+    width: 100%;
+}
+/******************Select Resume Page Start ************************/
+.select_resume-page {
+    background-color: #f1f1f1;
+}
+
+.select_resume-content {
+    padding: 30px;
+}
+
+.select_resume-inner {
+    background-color: #fff;
+    width: 900px;
+    margin: 30px auto;
+    padding: 100px 30px;
+    border-radius: 15px;
+}
+.resume-title h3
+{
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+.resume_opt h4
+{
+    font-size: 18px;
+    margin-top: 50px;
+}
+.select_link
+{
+    color: #333 !important;
+}
+/******************Select Resume Page End************************/
+/******************Upload Resume Page Start ************************/
+.img_upload-page {
+    background-color: #f1f1f1;
+}
+
+.img_upload-content {
+    padding: 30px;
+}
+
+.img_upload-inner {
+    background-color: #fff;
+    width: 900px;
+    margin: 30px auto;
+    padding:30px;
+    border-radius: 15px;
+}
+.img_upload-title h3
+{
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+.upload_info
+{
+    padding: 20px 0px 0px;
+}
+.upload_info p
+{
+    margin-bottom: 0px;
+}
+.upload_info .highlight
+{
+    color: #2194d3;   
+}
+.upload_header
+{
+    background-color: #003fbe;
+    padding: 10px;
+}
+/******************Upload Resume Page End************************/
+/******************Create New Resume Page Start ************************/
+.newresume-page {
+    background-color: #f1f1f1;
+}
+
+.newresume-content {
+    padding: 30px;
+}
+
+.newresume-inner {
+    background-color: #fff;    
+    padding: 100px 30px;
+    border-radius: 5px;
+}
+.newresume-content .resume-title h3
+{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.control_btn
+{
+    margin-top: 10px;
+}
+/******************Create New Resume Page End************************/
+/*******************Responsive Css Start*****************************/
 @media(max-width:767px) {
     .login-content-inner {
         background-color: #fff;
@@ -1609,7 +1778,6 @@ a {
         padding: 20px;
         border-radius: 3px;
     }
-
     .template-content-inner {
         background-color: #F1F1F1;
         width: 100%;
@@ -1618,7 +1786,6 @@ a {
         border-radius: 3px;
         box-shadow: 10px;
     }
-
     .login-title h3 {
         text-align: center !important;
         border-bottom: 1px solid #ddd;
@@ -1627,6 +1794,51 @@ a {
         font-size: 16px;
     }
     .login-form {
-    padding: 0px;
+        padding: 0px;
+    }
+    .alnpadding{
+        padding:20px 20px 10px 0px;
+    }
+    .text-right{
+        padding:10px 14px;
+        text-align: left !important;
+    }
+    .select_resume-inner {
+        background-color: #fff;
+        width: 100%;
+        margin: 30px auto;
+        padding: 30px;
+        border-radius: 15px;
+    }
+    .select_resume-inner img
+    {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+    }
+    .resume_opt h4 {
+        font-size: 18px;
+        margin-top: 20px;
+    }
 }
+@media(min-width:768px) and (max-width: 993px)
+{
+   .select_resume-inner {
+        background-color: #fff;
+        width: 100%;
+        margin: 30px auto;
+        padding: 30px;
+        border-radius: 15px;
+    } 
+    .select_resume-inner img
+    {
+        display: block;
+        margin: 0 auto;
+        width: 100% !important;
+    }
+    .resume_opt h4 {
+        font-size: 16px;
+        margin-top: 20px;
+    }
 }
+/*******************Responsive Css End*******************************/

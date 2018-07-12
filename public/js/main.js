@@ -147,7 +147,7 @@ jQuery(document).ready(function( $ ) {
   });
 
   //Google Map
-  /*var get_latitude = $('#google-map').data('latitude');
+  var get_latitude = $('#google-map').data('latitude');
   var get_longitude = $('#google-map').data('longitude');
 
   function initialize_google_map() {
@@ -163,28 +163,6 @@ jQuery(document).ready(function( $ ) {
       map: map
     });
   }
-  google.maps.event.addDomListener(window, 'load', initialize_google_map);*/
-  /*** Login Form validation***/
-  $("#form").validate({
-        rules: {
-            "email": {
-                required: true,
-                email: true
-            },
-            "password": {
-                required: true,
-                regexp: /^[A-Za-z\d]+$/i
-            }
-        },
-        messages: {
-            "email": {
-                required: "Please enter an email",
-                email: "Email is invalid"
-            },
-            "password": {
-                required: "Please enter the password",
-                password:"password is incorrect"
-            }
-        }
-    });
+  google.maps.event.addDomListener(window, 'load', initialize_google_map);
+
 });
