@@ -1,0 +1,204 @@
+@extends('layouts.frontend')
+
+@section('content')
+
+<main id="main">
+    <!--==========================
+      Login Form Start
+      ==========================-->
+    <section class="login-page">
+        <div class="container">
+            <div class="row login-content">
+                <div class="col-md-12 col-sm-12">
+                    <div class="template-title">
+                        <h3 class="text-center">Select your favorite resume template</h3>
+                    </div>
+                    <p>Don't worry, you can change your template later</p>
+                </div>
+                <div class="template-content-inner">
+                    <div class="row temp-content">
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Classical</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange" >Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Executive</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Collegiate</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange" >Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Contemporary</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10" >
+                                        <button type="button" class="btn hover bgwhite" >Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row temp-content">
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Tempalte" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row temp-content">
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Tempalte" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">Test</div>
+                                <div class="buttonappend">
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgwhite">Preview template</button>
+                                    </div>
+                                    <div class="row padding10">
+                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--==========================
+    Login Form Start
+    ==========================-->
+
+</main>
+
+@endsection
