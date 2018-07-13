@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\ResumeTemplate;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-class ManageResumeTemplate extends Controller
+
+class PhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class ManageResumeTemplate extends Controller
      */
     public function index()
     {
-        $resume_template = ResumeTemplate::all();
-
-        return view('admin.manage_resume_template',compact('resume_template'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class ManageResumeTemplate extends Controller
      */
     public function create()
     {
-        return view('admin.create_edit_resume_template');
+        //
     }
 
     /**
@@ -37,25 +34,7 @@ class ManageResumeTemplate extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'template_name' => 'required|max:255',
-            'template_screen' => 'required',
-        ]);
-        $data = $request->all();
-        $resume['template_name'] = $data['template_name'];
-
-        $template_screen = null;
-        if (request()->hasFile('template_screen')) {
-            $file = request()->file('template_screen');
-            $template_screen = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-            $file->move('./uploads/template_screen/', $template_screen);
-            $resume['template_screen'] = $template_screen;
-        }
-
-        ResumeTemplate::create($resume);
-
-        return redirect('admin/manage_resume_template')->with('success');
-
+        //
     }
 
     /**

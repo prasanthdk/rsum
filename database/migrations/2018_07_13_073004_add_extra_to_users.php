@@ -13,9 +13,14 @@ class AddExtraToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table) {
-            $table->string('lastname');
-            $table->longtext('lastname');
+        Schema::table('users', function(Blueprint $table) {
+
+            $table->integer('phone')->after('status');
+            $table->longtext('lastname')->after('phone');
+            $table->longtext('address')->after('lastname');
+            $table->string('city')->after('address');
+            $table->longtext('state')->after('city');
+            $table->longtext('zip')->after('state');
         });
     }
 

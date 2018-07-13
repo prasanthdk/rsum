@@ -33,7 +33,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware' => 'isAdm
     Route::get('/manage_user', 'ManageUser@ManageUser');
     Route::get('/manage_user_view/{user_id}', 'ManageUser@ManageUserView');
 
-    Route::get('/manage_resume_template', 'ManageResumeTemplate@ResumeTemplate');
+    Route::resource('/manage_resume_template', 'ManageResumeTemplate');
+    Route::post('/manage_resume_template/store', 'ManageResumeTemplate@store');
     Route::get('/manage_resume_example', 'ManageResumeExample@ResumeExample');
     Route::get('/payment_subscription', 'ManageSubscription@PaymentSubscription');
     Route::get('/create_resume', 'ManageResume@CreateResume');
