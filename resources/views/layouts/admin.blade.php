@@ -144,6 +144,11 @@
 <script src="{{ asset('admin_temp/datatable/js/dataTables.fixedHeader.min.js')}}"></script>
 <script src="{{ asset('admin_temp/datatable/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('admin_temp/datatable/js/responsive.bootstrap.min.js')}}"></script>
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'summary-ckeditor' );
+</script>
+
 
 <script src="{{ asset('admin_temp/js/custom.js')}}"></script>
 <script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ResumeTemplate;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,7 +32,10 @@ class HomeController extends Controller
      */
     public function SelectTemplate(Request $request)
     {
-        return view('select_template');
+
+        $resume_template = ResumeTemplate::where('status','=','1')->orderBy('created_at')->get();
+
+        return view('select_template',compact('resume_template'));
     }
 
 }

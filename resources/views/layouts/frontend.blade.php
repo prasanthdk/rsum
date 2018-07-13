@@ -114,6 +114,11 @@
 <!-- Contact Form JavaScript File -->
 <script src="{{ asset('contactform/contactform.js')}}"></script>
 <script src="{{ asset('lib/jquery/jquery.validate.min.js')}}"></script>
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'summary-ckeditor' );
+</script>
+
 
 <!-- Template Main Javascript File -->
 <!-- Template Main Javascript File -->
