@@ -165,4 +165,46 @@ jQuery(document).ready(function( $ ) {
   }
   google.maps.event.addDomListener(window, 'load', initialize_google_map);
 
+  //***************************************************Thumbanail Hover Effect
+  $("[rel='tooltip']").tooltip();            
+  $('.thumbnail').hover(
+      function(){
+          $(this).find('.caption').slideDown(250); //.fadeIn(250)
+      },
+      function(){
+          $(this).find('.caption').slideUp(250); //.fadeOut(205)
+      }
+  ); 
+  //***************************************************Loading...
+  $('.btn').on('click', function() {
+    var $this = $(this);
+    var loadingText = '<i class="fa fa-spinner fa-spin"></i> loading...';
+    if ($(this).html() !== loadingText) {
+      $this.data('original-text', $(this).html());
+      $this.html(loadingText);
+    }
+    setTimeout(function() {
+      $this.html($this.data('original-text'));
+    }, 2000);
+  });
+  //**************************************************Form Validation
+    $('.defaultForm').bootstrapValidator();
+    $('.defaultForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                container: '#firstNameMessage',
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required and cannot be empty'
+                    }
+                }
+            }
+        }
+    });
 });
