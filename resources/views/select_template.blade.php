@@ -17,180 +17,203 @@
                 </div>
                 <div class="template-content-inner">
                     <div class="row temp-content">
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Classical</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange" >Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Executive</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Collegiate</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange" >Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Contemporary</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10" >
-                                        <button type="button" class="btn hover bgwhite" >Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
                     </div>
                     <div class="row temp-content">
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                            <div class="thumbnail">
-                                <img src="img/download.png" class="image" alt="Tempalte" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
                     </div>
                     <div class="row temp-content">
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                            <div class="thumbnail">
-                                <img src="img/download.png" class="image" alt="Tempalte" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
                             <div class="thumbnail">
                                 <img src="img/download.png" class="image" alt="Template" />
-                                <div class="caption text-center">Test</div>
-                                <div class="buttonappend">
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgwhite">Preview template</button>
-                                    </div>
-                                    <div class="row padding10">
-                                        <button type="button" class="btn hover bgorange">Select template</button>
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="resume_head text-center">Sample Resume</div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 wow fadeInUp">
+                            <div class="thumbnail">
+                                <img src="img/download.png" class="image" alt="Template" />
+                                <div class="caption text-center">
+                                    <div class="buttonappend">
+                                        <div class="row padding10">
+                                            <a href="#" class="btn hover bgwhite">Preview template</a>
+                                        </div>
+                                        <div class="row padding10">
+                                            <a href="select_resume" class="btn hover bgorange">Select template</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resume_head text-center">Sample Resume</div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -198,7 +221,20 @@
     <!--==========================
     Login Form Start
     ==========================-->
-
+    <!--==========================
+      Sub Menu
+    ============================-->
+    <section class="sub_menu text-center">
+        <ul class="list-inline">
+            <li><a href="#">About us </a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms of use </a></li>
+            <li><a href="#">Contact us </a></li>
+        </ul>
+    </section>
+    <!--==========================
+      Sub Menu
+    ============================-->
 </main>
 
 @endsection

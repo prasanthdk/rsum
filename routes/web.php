@@ -20,7 +20,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/select_template', 'HomeController@SelectTemplate');
+Route::get('/select_resume', 'ResumeController@ChooseTemplate');
+Route::get('/personal_info', 'ResumeController@PersonalInfo');
 Route::get('/', 'HomeController@index')->name('home');
+
+
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware' => 'isAdmin'], function () {
 
@@ -33,5 +37,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware' => 'isAdm
     Route::get('/manage_resume_example', 'ManageResumeExample@ResumeExample');
     Route::get('/payment_subscription', 'ManageSubscription@PaymentSubscription');
     Route::get('/create_resume', 'ManageResume@CreateResume');
+    Route::get('/create_edit_template', 'ManageResumeTemplate@CreateTemplate');
 });
-//Route::POST('password/email','Auth\PasswordController@PasswordLinkToEmail');
