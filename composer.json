@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "laravelcollective/html": "^5.2.0",
         "smalot/pdfparser": "^0.13.2"
     },
     "require-dev": {
