@@ -1634,6 +1634,13 @@ padding:30px 100px;
     outline: 0;   
     border: 1px solid #333 !important;
 }
+.bgblue{
+    background-color:#6f9dff !important;
+    padding: 5px 30px;
+    border-radius: 50px;
+    outline: none !important;   
+    margin-right: 15px;
+}
 .upld{
     text-align:center;
 }
@@ -1759,7 +1766,7 @@ padding:30px 100px;
 .newresume-inner {
     background-color: #fff;    
     padding: 30px 30px 20px;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
 }
 .newresume-content .resume-title h3
 {
@@ -1836,6 +1843,7 @@ padding:30px 100px;
 }
 /******************Create New Resume Page End************************/
 /******************Loading...****************************************/
+/*Common For Validation End*/
 .glyphicon.spinning {
     animation: spin 1s infinite linear;
     -webkit-animation: spin2 1s infinite linear;
@@ -2046,6 +2054,90 @@ padding:30px 100px;
   margin-top: 5px;
   margin-bottom: 10px;
   color: #737373;
+}
+.center-block {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group .icon-addon .form-control {
+    border-radius: 0;
+}
+
+.icon-addon {
+    position: relative;
+    color: #555;
+    display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before {
+    display: table;
+    content: " ";
+}
+
+.icon-addon:after {
+    clear: both;
+}
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+
+.icon-addon.addon-lg .form-control {
+    line-height: 1.33;
+    height: 46px;
+    font-size: 18px;
+    padding: 10px 16px 10px 40px;
+}
+
+.icon-addon.addon-sm .form-control {
+    height: 30px;
+    padding: 5px 10px 5px 28px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.icon-addon.addon-lg .fa,
+.icon-addon.addon-lg .glyphicon {
+    font-size: 12px;
+    margin-left: 0;
+    left: 11px;
+    top: 10px;
+}
+
+.icon-addon.addon-md .form-control,
+.icon-addon .form-control {
+    padding-left: 30px;
+    float: left;
+    font-weight: normal;
+}
+
+.icon-addon.addon-sm .fa,
+.icon-addon.addon-sm .glyphicon {
+    margin-left: 0;
+    font-size: 12px;
+    left: 5px;
+    top: -1px
+}
+
+.icon-addon .form-control:focus + .glyphicon,
+.icon-addon:hover .glyphicon,
+.icon-addon .form-control:focus + .fa,
+.icon-addon:hover .fa {
+    color: #2580db;
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -2665,4 +2757,141 @@ padding:30px 100px;
 }
 .glyphicon-tree-deciduous:before {
   content: "\e200";
+}
+/*Common For Validation End*/
+.search_by_job_title
+{
+    padding-right: 0px;
+}
+.Search_list h4
+{
+    font-size: 16px;
+    text-decoration: underline;
+}
+.Search_list_content
+{
+    background-color: #f7f7f7;
+    border:1px solid #d0d0d0;
+    padding: 30px;
+    text-align: justify;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.search_list_item li
+{
+    margin-bottom: 15px;
+    border-left: 10px solid #b2b9c9;
+    border-right: 10px solid #b2b9c9;
+    padding: 5px 20px;
+    font-size: 12px;
+}
+.search_list_item li:hover
+{
+    background-color: #fff;
+    border-left: 10px solid #668cd7;
+    border-right: 10px solid #668cd7;
+    cursor: pointer;
+}
+.view_list
+{
+    border: 1px solid #ddd;
+    /*margin-bottom: 20px;*/
+    padding: 20px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.view_list .view_list_head
+{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.view_list .view_list_info 
+{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.view_list .view_list_action
+{
+    text-align: center;
+}
+.view_list .view_list_action i
+{
+    text-align: center;
+    line-height: 1.5;
+    font-size: 24px;
+    color: #9b9b9b;
+}
+.view_list .view_list_action i:hover
+{
+    cursor: pointer;
+    color: #668cd7;
+}
+.view_list:before
+{
+    content: '';
+    position: absolute;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-left: 50px solid #003fbe;
+    margin-left: -21px;
+    top: 35px;
+}  
+.list_count {
+    position: absolute;
+    top: 39px;
+    margin-left: -12px;
+    color: #fff;
+}
+.view_list_inner
+{
+    padding: 0 30px;
+}
+.editor_list li
+{
+    background: #6e9dff;
+    padding: 7px 15px;
+    color: #fff;
+    cursor: pointer;
+}
+.editor_list .bold
+{
+    margin-right: -2px;
+    font-weight: bold;
+}
+.editor_list .italic
+{
+    margin-right: -3px;
+    font-style: italic;
+}
+.editor_list .align
+{
+   margin-right: -3px;  
+   text-align: justify;
+}
+.editor_list .under_line
+{
+   margin-right: -2px;  
+   text-decoration: underline;
+}
+.editor_list .undo
+{
+   margin-right: -2px;  
+}
+#work_history
+{
+    border-radius: 0px;
+    margin-top: -7px;
+}
+#work_history:focus
+{
+    box-shadow: none;
+}
+.create_resume_frm .form-control
+{
+    box-shadow: none;
+}
+.check span
+{
+    font-size: 12px;
+    margin-top: 7px;
 }
