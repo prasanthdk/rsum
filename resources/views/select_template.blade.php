@@ -32,7 +32,7 @@
                                                     <a href="#" class="btn hover bgwhite">Preview template</a>
                                                 </div>
                                                 <div class="row padding10">
-                                                    <a href="{{ url('select_resume')}}" class="btn hover bgorange">Select template</a>
+                                                    <a href="javascript:void(0)" data-name="{{ $resume_template_list ->template_name }}" class="btn hover bgorange select_template">Select template</a>
                                                 </div>
                                             </div>
                                         </div>

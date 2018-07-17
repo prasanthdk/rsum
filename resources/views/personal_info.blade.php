@@ -17,12 +17,12 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="resume-prev-inner">
                                 <div class="row resume-prev-content wow fadeInUp">
-                                    <div class="thumbnail">
-                                        <img src="img/download.png" class="image" alt="Template" />
+                                    <div class="thumbnail" style="font-size: 5px">
+                                        <div class="_RESUME"></div>
                                         <div class="caption text-center">
                                             <div class="buttonappend">
                                                 <div class="row padding10">
-                                                    <a href="#" class="btn hover bgwhite"><i class="fa fa-eye"></i> Preview</a>
+                                                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn hover bgwhite"><i class="fa fa-eye"></i> Preview</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -36,7 +36,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 wow fadeInUp finput">
                                             <div class="form-group">
-                                                <label>First Name</label>
+                                                <label>First Name <span id="fname"></span></label>
                                                 <input type="text" name="fname" class="form-control" placeholder="First Name">
                                             </div>
                                         </div>
@@ -111,5 +111,22 @@
     ==========================-->
 
 </main>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="_RESUME"> </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script src="{{ asset('js/personal_info.js') }}" type="application/javascript"></script>
 
 @endsection

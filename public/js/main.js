@@ -1,5 +1,5 @@
 jQuery(document).ready(function( $ ) {
-
+    //header('Content-Type: application/json');
   // Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
@@ -168,8 +168,17 @@ jQuery(document).ready(function( $ ) {
       $this.html($this.data('original-text'));
     }, 2000);
   });
+
+  /*Select Template*/
+    $('.select_template').click(function (ev) {
+        ev.preventDefault();
+        var name = $(this).attr('data-name');
+        localStorage.setItem('_Rname', name);
+        window.location.href = 'select_resume';
+    });
+
   //**************************************************Form Validation
-    $('.defaultForm').bootstrapValidator();
+    /*$('.defaultForm').bootstrapValidator();
     $('.defaultForm').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
@@ -187,5 +196,6 @@ jQuery(document).ready(function( $ ) {
                 }
             }
         }
-    });
+    });*/
+
 });

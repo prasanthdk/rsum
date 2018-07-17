@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicons -->
     <link href="{{ asset('img/favicon.png')}}" rel="icon">
     <link href="{{ asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
@@ -61,6 +61,10 @@
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
+
+<script src="{{ asset('lib/jquery/jquery.min.js')}}"></script>
+
+
 @yield('content')
 
 
@@ -99,9 +103,7 @@
 </footer><!-- #footer -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
 <!-- JavaScript Libraries -->
-<script src="{{ asset('lib/jquery/jquery.min.js')}}"></script>
 <script src="{{ asset('lib/jquery/jquery-migrate.min.js')}}"></script>
 <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('lib/easing/easing.min.js')}}"></script>
@@ -116,7 +118,8 @@
 <script src="{{ asset('lib/jquery/jquery.validate.min.js')}}"></script>
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 <script>
-    CKEDITOR.replace( 'summary-ckeditor' );
+    var APP_URL = {!! json_encode(url('/')) !!};
+    //CKEDITOR.replace( 'summary-ckeditor' );
 </script>
 
 

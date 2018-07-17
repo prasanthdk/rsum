@@ -37,5 +37,9 @@ class HomeController extends Controller
 
         return view('select_template',compact('resume_template'));
     }
+    public function Resume($resume_type){
+
+        return view('resume',compact('resume_type'));
+    }
 
 }
