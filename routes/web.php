@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/select_template', 'HomeController@SelectTemplate');
 Route::get('/select_resume', 'ResumeController@ChooseTemplate');
 Route::get('/personal_info', 'ResumeController@PersonalInfo');
+Route::get('/work_info', 'ResumeController@WorkInfo');
 Route::post('/resume/{type}', 'HomeController@Resume');
 Route::get('/', 'HomeController@index')->name('home');
 

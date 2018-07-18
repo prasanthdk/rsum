@@ -1,6 +1,11 @@
 jQuery(document).ready(function( $ ) {
     //header('Content-Type: application/json');
   // Back to top button
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('.back-to-top').fadeIn('slow');
@@ -109,8 +114,41 @@ jQuery(document).ready(function( $ ) {
       }
     }
   });
+/* user Registration  */
+    $("#_RegistrationForm").on("submit", function(e) {
+        e.preventDefault();
+        $( "#name" ).val(localStorage.getItem('fname'));
+        $.ajax({
+            type: "POST",
+            url: APP_URL+'/register',
+            data: $("#_RegistrationForm").serialize(), // serializes the form's elements.
+            error: function(xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                $('.help-block').html('<strong>'+err.email+'</strong>');
+
+            },
+            success: function(data)
+            {
+                window.location.href = APP_URL+"/personal_info";
+            }
+        });
+    });
 
 
+    /*$("#register_submit").click(function(e) {
+        e.preventDefault();
+
+          $.ajax({
+              type: "POST",
+              url: APP_URL+'/register',
+              data: $("#_RegistrationForm").serialize(), // serializes the form's elements.
+              success: function(data)
+              {
+                  alert(data); // show response from the php script.
+              }
+          });
+    });
+*/
   // Porfolio - uses the magnific popup jQuery plugin
   $('.portfolio-popup').magnificPopup({
     type: 'image',
@@ -147,7 +185,7 @@ jQuery(document).ready(function( $ ) {
   });
 
   //***************************************************Thumbanail Hover Effect
-  $("[rel='tooltip']").tooltip();            
+  $("[rel='tooltip']").tooltip();
   $('.thumbnail').hover(
       function(){
           $(this).find('.caption').slideDown(250); //.fadeIn(250)
@@ -155,7 +193,7 @@ jQuery(document).ready(function( $ ) {
       function(){
           $(this).find('.caption').slideUp(250); //.fadeOut(205)
       }
-  ); 
+  );
   //***************************************************Loading...
   $('.btn').on('click', function() {
     var $this = $(this);
@@ -197,5 +235,6 @@ jQuery(document).ready(function( $ ) {
             }
         }
     });*/
+
 
 });

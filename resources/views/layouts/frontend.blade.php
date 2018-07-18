@@ -46,7 +46,7 @@
                 <li>
                     <a href="{{ url('logout') }}"
                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();localStorage.clear();">
                         Logout
                     </a>
 
@@ -61,6 +61,75 @@
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
+
+<!--Registration Form-->
+<div id="_Registration" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form id="_RegistrationForm" class="login-form" method="post" action="">
+                    {{ csrf_field() }}
+                    <!--<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}" >
+                        <label for="email">Name</label>
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+
+                        @if ($errors->has('name'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                        @endif
+                    </div>-->
+                    <input id="name" type="hidden" class="form-control" name="name" value="">
+                    <div class="form-group _email {{ $errors->has('email') ? ' has-error' : '' }}" >
+                        <label for="password">Email </label>
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                        <span class="help-block">
+                                        </span>
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group  {{ $errors->has('password') ? ' has-error' : '' }} " >
+                        <label for="password">Password </label>
+                        <input id="password" type="password" class="form-control" name="password" required>
+
+                        @if ($errors->has('password'))
+                        <span class="help-block">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                        @endif
+
+                    </div>
+                  <!--  <div class="form-group  {{ $errors->has('password') ? ' has-error' : '' }} " >
+                        <label for="password-confirm">Confirm Password </label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                        @if ($errors->has('password_confirmation'))
+                        <span class="help-block">
+                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                            </span>
+                        @endif
+
+                    </div>
+-->
+                    <div class="form-group"  align="center"  >
+                        <button type="submit" class="btn btn-primary btn-block" id="register_submit" style="border-radius:8px">Register</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 
 <script src="{{ asset('lib/jquery/jquery.min.js')}}"></script>
 
@@ -79,6 +148,7 @@
         <li><a href="#">Contact us </a></li>
     </ul>
 </section>
+
 <footer id="footer">
     <div class="container">
         <div class="row">

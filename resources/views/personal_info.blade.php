@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-7 col-sm-7">
                             <div class="create_resume_frm">
-                                <form class="defaultForm" method="post" action="#" autocomplete="off">
+                                <form class="defaultForm" method="get" action="#" autocomplete="off">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 wow fadeInUp finput">
                                             <div class="form-group">
@@ -98,7 +98,9 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 text-center wow fadeInUp">
                             <a href="Javascript:void(0);" onclick="window.history.back();" class="btn btn-primary bggray pull-left">Previous</a>
-                            <button type="submit" class="btn btn-primary bgorange pull-right">Next</button>
+                            <a  @if (Auth::guest()) type="button" @else href="{{ url('work_info') }}" @endif class="btn btn-primary bgorange pull-right">Next</a>
+
+
                         </div>
                     </div>
                 </div>

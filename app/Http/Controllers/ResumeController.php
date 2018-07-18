@@ -6,12 +6,27 @@ use Illuminate\Http\Request;
 
 class ResumeController extends Controller
 {
-   public function ChooseTemplate(){
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function ChooseTemplate(){
 
        return view('select_resume');
    }
-   public function PersonalInfo(){
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function PersonalInfo(){
 
        return view('personal_info');
+   }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function WorkInfo(){
+
+       return view('work_info');
    }
 }
