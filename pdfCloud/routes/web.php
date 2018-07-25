@@ -16,3 +16,5 @@
 });*/
 
 Route::resource('/', 'HomeController');
+Route::post('/store', 'HomeController@store');
+Route::get('/edit', 'HomeController@edit');

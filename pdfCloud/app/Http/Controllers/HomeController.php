@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Imagick;
+use function MongoDB\BSON\toJSON;
 
 class HomeController extends Controller
 {
@@ -34,7 +36,31 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $getimageName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
+        $output_dir = public_path('uploads\\').$getimageName;
+        if ($request->_uploadFile->move(public_path('uploads\\'), $getimageName)) {
+
+            $im = new imagick($output_dir);
+            $noOfPagesInPDF = $im->getNumberImages();
+
+            if ($noOfPagesInPDF) {
+
+                for ($i = 0; $i < $noOfPagesInPDF; $i++) {
+
+                    $url = $output_dir.'['.$i.']';
+
+                    $image = new Imagick($url);
+
+                    $image->setImageFormat("png");
+
+                    $image->writeImage(public_path("/uploads/".($i+1).'-'.time().'.png'));
+
+                }
+            }
+            $response = "Success";
+        }
+        return response($response);
+
     }
 
     /**
@@ -54,9 +80,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+       return view('edit_file');
     }
 
     /**

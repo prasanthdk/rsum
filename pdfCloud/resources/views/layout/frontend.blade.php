@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>PDF Cloud</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="_token" content="{{ app('Illuminate\Encryption\Encrypter')->encrypt(csrf_token()) }}" />
     <meta content="" name="keywords">
     <meta content="" name="description">
     <!-- Favicons -->
@@ -49,7 +50,7 @@
         </div>
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#body">Home</a></li>
+                <li class="menu-active"><a href="{{ url('/')}}">Home</a></li>
                 <li><a href="">Features</a></li>
                 <li><a href="">Contact us</a></li>
                 <li><a href="">Signup</a></li>
@@ -119,7 +120,9 @@
 <script src="contactform/contactform.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-
+<script>
+    var APP_URL = {!! json_encode(url('/')) !!};
+</script>
 <!-- Template Main Javascript File -->
 <script src="js/main.js"></script>
 <script src="js/custom.js"></script>
