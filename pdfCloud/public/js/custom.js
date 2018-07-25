@@ -71,8 +71,10 @@ $(document).ready(function() {
             },
             mimeType: "multipart/form-data"
         }).done(function (res) {
-            if(res ==='Success'){
-                window.location.href=APP_URL+"/edit";
+            var data = JSON.parse(res);
+
+            if(data.message =='Success'){
+                window.location.href=APP_URL+"/edit/";
             }
             /*$(my_form_id)[0].reset(); //reset form
             $(result_output).html(res); //output response from server

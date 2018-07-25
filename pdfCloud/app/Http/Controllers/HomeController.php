@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\TempConvertFiles;
+use App\TempFiles;
 use Illuminate\Http\Request;
 use Imagick;
 use function MongoDB\BSON\toJSON;
-
 class HomeController extends Controller
 {
     /**
@@ -36,16 +37,20 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $getimageName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
-        $output_dir = public_path('uploads\\').$getimageName;
-        if ($request->_uploadFile->move(public_path('uploads\\'), $getimageName)) {
+        $getfileName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
+        $output_dir = public_path('uploads\\original_file\\').$getfileName;
+
+        if ($request->_uploadFile->move(public_path('uploads\\original_file\\'), $getfileName)) {
 
             $im = new imagick($output_dir);
             $noOfPagesInPDF = $im->getNumberImages();
-
+            $tempfile = TempFiles::create(['file_name'=>$getfileName,'status'=>'1']);
+            $file_id = $tempfile->id;
             if ($noOfPagesInPDF) {
 
                 for ($i = 0; $i < $noOfPagesInPDF; $i++) {
+
+                    $image_name = ($i+1).'-'.time().'.png';
 
                     $url = $output_dir.'['.$i.']';
 
@@ -53,13 +58,14 @@ class HomeController extends Controller
 
                     $image->setImageFormat("png");
 
-                    $image->writeImage(public_path("/uploads/".($i+1).'-'.time().'.png'));
+                    $image->writeImage(public_path("/uploads/convert_file/".$image_name));
 
+                    TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'status'=>'1']);
                 }
             }
             $response = "Success";
         }
-        return response($response);
+        return response()->json(['message' => $response,'file_id' => $file_id]);
 
     }
 
