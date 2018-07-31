@@ -2949,6 +2949,9 @@ padding-right: .5em !important;
     #header{
         border-bottom: 2px solid #dbdbdb !important;
     }
+    #loginForm {
+    padding: 0px 120px;
+}
 @media (max-width: 767px) {
     .forms-right-icons .icon {
         text-align: left;
