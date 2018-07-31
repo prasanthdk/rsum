@@ -216,16 +216,82 @@
             </div>
             <div class="modal-body">
                 {{ Form::open(array('method'=>'post','class'=> 'upload-form','url' => '/store', 'id'=>'uploadForm' ,'enctype' => 'multipart/form-data')) }}
+
                 <div class="file-upload">
+
+                    <div class="select_btn">
+                            <a class="file-upload-btn"  onclick="$('.file-upload-input').trigger( 'click' )">CHOOSE FILE</a>
+                            <p class="text-center">OR</p>
+                        </div>
+
+
+                        <div class="drive_upload text-center">
+                    <!-- <p>OR</p>
+                    <h3>Upload File From</h3> -->
+                    <ul class="list-inline list-unstyled drive_img">
+                        <div class="row">
+
+                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3 gledrive">
+                          <div class="driveicn">
+                                <li>
+                                     <a href="#">
+                                        <img src="{{ asset('images/Drive_icon.png') }}" alt="Drive Icon">
+                                        <span>Google drive</span>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3 gledrive">
+                          <div class="driveicn">
+                                <li>
+                                     <a href="#" class="drops">
+                                        <img src="{{ asset('images/Box_icon.png') }}" alt="Drive Icon">
+                                        <span>Dropbox</span>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3 gledrive">
+                          <div class="driveicn">
+                                <li>
+                                     <a href="#" class="drops">
+                                        <img src="{{ asset('images/cloud_icon.png') }}" alt="Drive Icon">
+                                        <span>Onedrive</span>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3">
+                          <div class="driveicn">
+                                <li>
+                                   <a href="#" class="drops boxic">
+                                        <img src="images/Box.png" alt="Drive Icon">                     
+                                    </a>
+                                </li>
+                          </div>
+                        </div>
+
+                        </div>
+                    </ul>
+                    <p class="chs">OR</p>
+                </div>
+
+
                     <div class="image-upload-wrap">
                         <input class="file-upload-input" type='file' name="_uploadFile" accept=".xlsx,.xls,image/*,.doc/*,.docx/*,.ppt,.pptx,.txt,.pdf" />
-                        <div class="drag-text">
+                       <!--  <div class="drag-text">
                             <h3>Drag and drop a file or select add Image</h3>
                             <p>OR</p>
-                        </div>
-                        <div class="select_btn">
-                            <a class="file-upload-btn"  onclick="$('.file-upload-input').trigger( 'click' )">Select File</a>
-                        </div>
+                        </div> -->
+
+                        <ul class="list-inline arrows">
+                            <li><img src="images/arrow.png"></li>
+                            <li class="drps">Drag and drop files here</li>
+                        </ul>
+                        
                     </div>
                 </div>
                 {{ Form::close() }}
@@ -236,7 +302,7 @@
                 </div>
 
 
-                <div class="drive_upload text-center">
+                <!-- <div class="drive_upload text-center">
                     <p>OR</p>
                     <h3>Upload File From</h3>
                     <ul class="list-inline list-unstyled drive_img">
@@ -256,7 +322,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
 
             </div>
         </div>

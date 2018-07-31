@@ -1727,9 +1727,16 @@ a:hover {
     font-weight: bold;
 }
 
-.login-form {
+ #loginForm {
     padding: 0px 120px;
 }
+.restpw{
+    padding: 0px 120px;
+}
+
+/*.login-form {
+    padding: 0px 120px;
+}*/
 
 .selectres-form {}
 
@@ -1960,6 +1967,15 @@ a:hover {
     .login-form {
         padding: 0px;
     }
+    #loginForm {
+    padding: 0px;
+}
+.file-upload-btn {
+    padding: 0.6em 3em !important;
+    }
+.restpw{
+    padding: 0px;
+}
     .alnpadding {
         padding: 20px 20px 10px 0px;
     }
@@ -2949,9 +2965,7 @@ padding-right: .5em !important;
     #header{
         border-bottom: 2px solid #dbdbdb !important;
     }
-    #loginForm {
-    padding: 0px 120px;
-}
+   
 @media (max-width: 767px) {
     .forms-right-icons .icon {
         text-align: left;
