@@ -231,7 +231,7 @@
                 {{ Form::close() }}
 
                 <div class="form-wrap">
-                     <div id="progress-wrp"><div class="progress-bar"></div ><div class="status">0%</div></div>
+                    <div id="progress-wrp"><div class="progress-bar"></div ><div class="status">0%</div></div>
                     <div id="output"><!-- error or success results --></div>
                 </div>
 

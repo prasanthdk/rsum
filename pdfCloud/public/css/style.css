@@ -2236,6 +2236,7 @@ border: 1px solid #d7d7d7;*/
     /*padding: 40px 0 32px;*/
     padding: 4px 0 15px;
     width: 62%;
+    text-align: center;
 }
 
 .file-upload-content {
@@ -2342,9 +2343,9 @@ border: 1px solid #d7d7d7;*/
 }
 
 .drive_upload p {
-    margin-bottom: 7px;
+    /*margin-bottom: 7px;
     font-size: 14px;
-    color: #7e7a79;
+    color: #7e7a79;*/
 }
 
 .drive_img img {
@@ -2355,6 +2356,8 @@ border: 1px solid #d7d7d7;*/
     /*border:1px solid #ff9000;
     border-radius: 5px;*/
 }
+
+
 
 .image-title-wrap .btn {
     width: 200px;
@@ -2398,9 +2401,9 @@ border: 1px solid #d7d7d7;*/
 }
 
 .drive_upload {
-    position: absolute;
+    /*position: absolute;
     top: 55%;
-    left: Calc(50% - 77px);
+    left: Calc(50% - 77px);*/
 }
 
 #demo {
