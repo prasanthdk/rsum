@@ -2861,3 +2861,88 @@ li.horz span {
     border-left: 0 !important;
     margin-right: 10px;
 }
+
+/*signup*/
+
+.r-form {
+    padding-top: 40px;
+}
+.r-form .form-group {
+    margin-bottom: 25px;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.forms-right-icons {
+
+    padding-top: 40px;
+    color: #fff;
+    text-align: left;
+
+}
+.forms-right-icons .icon {
+    text-align: right;
+}
+.forms-right-icons {
+    color: #000;
+    text-align: left;
+}
+.forms-right-icons p{
+    color: #000;
+}
+.borderright{
+    border-right: 2px dotted #313131;
+}
+.accs{
+    margin-bottom: -0.2em;
+    color: #7a7a7a;
+    font-size: 14px;
+    margin-top: .3em;
+}
+.countinue{
+    background: #cf4032;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    padding: 34px 13px;
+    border-radius: 0;
+}
+.logs{
+    color: #cf4032;
+}
+.btncnt {
+    margin: 0 auto;
+    text-align: center;
+}
+.consent{
+    font-size: 11px;
+    letter-spacing: 0.7px;
+}
+.r-form h3, .forms-right-icons h3{
+    color: #616161;
+    margin-bottom: 1.1em;
+}
+.instants p {
+    color: #616161;
+    font-size: 15px;
+}
+#footer .copyright {
+        text-align: center !important;
+        padding-top: 39px;
+        color: #fff;
+    }
+    #header{
+        border-bottom: 2px solid #dbdbdb !important;
+    }
+@media (max-width: 767px) {
+    .forms-right-icons .icon {
+        text-align: left;
+    }
+}
