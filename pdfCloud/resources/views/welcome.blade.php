@@ -218,13 +218,13 @@
                 {{ Form::open(array('method'=>'post','class'=> 'upload-form','url' => '/store', 'id'=>'uploadForm' ,'enctype' => 'multipart/form-data')) }}
                 <div class="file-upload">
                     <div class="image-upload-wrap">
-                        <input class="file-upload-input" type='file' onchange="readURL(this);" name="_uploadFile" accept=".xlsx,.xls,image/*,.doc/*,.docx/*,.ppt,.pptx,.txt,.pdf" />
+                        <input class="file-upload-input" type='file' name="_uploadFile" accept=".xlsx,.xls,image/*,.doc/*,.docx/*,.ppt,.pptx,.txt,.pdf" />
                         <div class="drag-text">
                             <h3>Drag and drop a file or select add Image</h3>
                             <p>OR</p>
                         </div>
                         <div class="select_btn">
-                            <button class="file-upload-btn">Select File</button>
+                            <a class="file-upload-btn"  onclick="$('.file-upload-input').trigger( 'click' )">Select File</a>
                         </div>
                     </div>
                 </div>
