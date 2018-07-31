@@ -224,7 +224,7 @@
                             <p>OR</p>
                         </div>
                         <div class="select_btn">
-                            <button class="file-upload-btn"  onclick="$('.file-upload-input').trigger( 'click' )">Select File</button>
+                            <button class="file-upload-btn">Select File</button>
                         </div>
                     </div>
                 </div>

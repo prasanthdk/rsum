@@ -30,7 +30,7 @@
 <header id="header" class="printsrn">
     <div class="container-fluid">
         <div id="logo" class="pull-left">
-            <a href="index.html"><img src="{{ asset('images/logo.png')}}" alt="" title="Logo" /></a>
+            <a href="{{ url('/')}}"><img src="{{ asset('images/logo.png')}}" alt="" title="Logo" /></a>
         </div>
         <!-- <div id="" class="pull-left">
           <span>Doc Type : PDF</span>
