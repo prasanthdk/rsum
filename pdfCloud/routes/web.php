@@ -17,5 +17,14 @@
 
 Route::resource('/', 'HomeController');
 Route::post('/store', 'HomeController@store');
-Route::get('/{file_id}/edit', 'HomeController@edit');
-Route::post('/save', 'HomeController@save');
+Route::get('/edit', 'HomeController@edit');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+$this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

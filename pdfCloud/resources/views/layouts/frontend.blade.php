@@ -4,29 +4,26 @@
     <meta charset="utf-8">
     <title>PDF Cloud</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="_token" content="{{ app('Illuminate\Encryption\Encrypter')->encrypt(csrf_token()) }}" />
+    <!-- CSRF Token -->
+    <meta name="_token" content="{{ csrf_token() }}">
     <meta content="" name="keywords">
     <meta content="" name="description">
     <!-- Favicons -->
-    <link href="{{ asset('img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ URL::asset('img/favicon.png')}}" rel="icon">
+    <link href="{{ URL::asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
     <!-- Google Fonts -->
+    <link href="{{ URL::asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700')}}" rel="stylesheet">
     <!-- Bootstrap CSS File -->
-    <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Libraries CSS Files -->
-    <link href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
-
-    <link href="{{ asset('sketch/sketch.css') }}" rel="stylesheet">
-<!--    <link rel="Stylesheet" type="text/css" href="{{ asset('sketch/wPaint.min.css')}}" />
--->
+    <link href="{{ URL::asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{ URL::asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
     <!-- Main Stylesheet File -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/style.css')}}" rel="stylesheet">
     <style type="text/css">
         .circle-img
         {
@@ -50,22 +47,30 @@
 <header id="header">
     <div class="container">
         <div id="logo" class="pull-left">
-            <a href="/"><img src="{{ asset('images/logo.png') }}" alt="" title="Logo" /></a>
+            <a href="{{url('/')}}"><img src="{{ URL::asset('images/logo.png')}}" alt="" title="Logo" /></a>
         </div>
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 <li class="menu-active"><a href="{{ url('/')}}">Home</a></li>
                 <li><a href="">Features</a></li>
                 <li><a href="">Contact us</a></li>
+                @if(!Auth::check())
                 <li><a href="">Signup</a></li>
                 <li><a href="">Login</a></li>
+                @endif
+                @if(Auth::check())
+                <li><a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                @endif
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
-
-
-<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
 
 @yield('content')
 
@@ -90,7 +95,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-3">
-                <img src="{{ asset('images/logo.png') }}" class="footer-logo" alt="Footer-Logo">
+                <img src="{{ URL::asset('images/logo.png')}}" class="footer-logo" alt="Footer-Logo">
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="copyright">
@@ -100,9 +105,9 @@
             <div class="col-md-3 col-sm-3">
                 <ul class="list-inline f-social-list">
                     <li>Follow Us</li>
-                    <li><a href="#"><img src="{{ asset('images/Forma-14.png') }}"/></a></li>
-                    <li><a href="#"><img src="{{ asset('images/google.png') }}"/></a></li>
-                    <li><a href="#"><img src="{{ asset('images/fb.png') }}"/></a></li>
+                    <li><a href="#"><img src="{{ URL::asset('images/Forma-14.png')}}"/></a></li>
+                    <li><a href="#"><img src="{{ URL::asset('images/google.png')}}"/></a></li>
+                    <li><a href="#"><img src="{{ URL::asset('images/fb.png')}}"/></a></li>
                 </ul>
             </div>
         </div>
@@ -113,58 +118,26 @@
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 <!-- JavaScript Libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-<script src="{{ asset('lib/jquery/jquery-migrate.min.js') }}"></script>
-<script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-<script src="{{ asset('lib/superfish/hoverIntent.js') }}"></script>
-<script src="{{ asset('lib/superfish/superfish.min.js') }}"></script>
-<script src="{{ asset('lib/wow/wow.min.js') }}"></script>
-<script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('lib/magnific-popup/magnific-popup.min.js') }}"></script>
-<script src="{{ asset('lib/sticky/sticky.js') }}"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/js/bootstrap-colorpicker.min.js"></script>
+<script src="{{ URL::asset('lib/jquery/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('lib/jquery/jquery-migrate.min.js')}}"></script>
+<script src="{{ URL::asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ URL::asset('lib/easing/easing.min.js')}}"></script>
+<script src="{{ URL::asset('lib/superfish/hoverIntent.js')}}"></script>
+<script src="{{ URL::asset('lib/superfish/superfish.min.js')}}"></script>
+<script src="{{ URL::asset('lib/wow/wow.min.js')}}"></script>
+<script src="{{ URL::asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+<script src="{{ URL::asset('lib/magnific-popup/magnific-popup.min.js')}}"></script>
+<script src="{{ URL::asset('lib/sticky/sticky.js')}}"></script>
 <!-- Contact Form JavaScript File -->
-<!--<script src="{{ asset('contactform/contactform.js') }}"></script>
---><script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<!-- <script src="{{ URL::asset('contactform/contactform.js')}}"></script> -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <script>
     var APP_URL = {!! json_encode(url('/')) !!};
 </script>
 <!-- Template Main Javascript File -->
-<script src="{{ asset('js/jquery.textover.min.js') }}"></script>
-<script src="{{ asset('js/jquery.mousewheel.js') }}"></script>
-
-<!--Sketch-->
-
-<script src="{{ asset('sketch/sketch.js') }}"></script>
-
-<script src="{{ asset('js/jquery.mapbox.js') }}"></script>
-
-<!--
-<script type="text/javascript" src="{{ asset('sketch/lib/jquery.ui.core.1.10.3.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('sketch/lib/jquery.ui.widget.1.10.3.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('sketch/lib/jquery.ui.mouse.1.10.3.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('sketch/lib/jquery.ui.draggable.1.10.3.min.js')}}"></script>
-
-<!-- wColorPicker -->
-<!--<link rel="Stylesheet" type="text/css" href="{{ asset('sketch/lib/wColorPicker.min.css')}}" />
-<script type="text/javascript" src="{{ asset('sketch/lib/wColorPicker.min.js')}}"></script>-->
-
-<!-- wPaint -->
-<!--<script type="text/javascript" src="{{ asset('sketch/wPaint.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('sketch/plugins/main/wPaint.menu.main.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('sketch/plugins/text/wPaint.menu.text.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('sketch/plugins/shapes/wPaint.menu.main.shapes.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('sketch/plugins/file/wPaint.menu.main.file.min.js')}}"></script>-->
-
-
-
-<script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/custom.js') }}"></script>
-<script src="{{ asset('js/draw.js') }}"></script>
-
+<script src="{{ URL::asset('js/main.js')}}"></script>
+<script src="{{ URL::asset('js/custom.js')}}"></script>
 
 </body>
 </html>
