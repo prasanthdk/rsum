@@ -6,7 +6,7 @@ $(function() {
         }
     });
 });
-alert(0);
+// alert(0);
 function readURL(input) {
 
       if (input.files && input.files[0]) {
