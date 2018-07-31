@@ -55,8 +55,8 @@
                 <li><a href="">Features</a></li>
                 <li><a href="">Contact us</a></li>
                 @if(!Auth::check())
-                <li><a href="">Signup</a></li>
-                <li><a href="">Login</a></li>
+                <li><a href="{{url('register')}}">Signup</a></li>
+                <li><a href="{{url('login')}}">Login</a></li>
                 @endif
                 @if(Auth::check())
                 <li><a href="{{ route('logout') }}"
