@@ -2434,8 +2434,11 @@ border: 1px solid #d7d7d7;*/
 }
 
 .drops {
-    padding-left: 1em !important;
-    padding-right: 1em !important;
+    /*padding-left: 1em !important;
+    padding-right: 1em !important;*/
+}
+.prnticn {
+    background: #d7d7d7;
 }
 
 .select_btn p {
@@ -2777,8 +2780,10 @@ li.horz span {
 }
 
 .jqtab a {
-    padding-left: 0.6em !important;
-    padding-right: .8em !important;
+    /*padding-left: 0.6em !important;
+    padding-right: .8em !important;*/
+    padding-left: 0.5em !important;
+padding-right: .5em !important;
 }
 
 .jq-tab-menu.jqtab span {
