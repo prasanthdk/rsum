@@ -17,4 +17,5 @@
 
 Route::resource('/', 'HomeController');
 Route::post('/store', 'HomeController@store');
-Route::get('/edit', 'HomeController@edit');
+Route::get('/{file_id}/edit', 'HomeController@edit');
+Route::post('/save', 'HomeController@save');
