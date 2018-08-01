@@ -34,7 +34,7 @@
                         <div class="jq-tab-menu jqtab" >
                             <div class="jq-tab-title  " data-tab="1">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                                         <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                     </a>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="jq-tab-title active" data-tab="1">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)"  onclick="text()" class="drops">
                                         <span>Text </span>
                                         <img src="{{ asset('images/text.png')}}" alt="Drive Icon">
 
@@ -51,7 +51,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="2">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops" onclick="erase('#ffffff')">
                                         <span>Erase </span>
                                         <img src="{{ asset('images/erase.png')}}" alt="Drive Icon">
 
@@ -61,7 +61,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="3">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Highlight </span>
                                         <img src="{{ asset('images/highlight.png')}}" alt="Drive Icon">
 
@@ -70,7 +70,7 @@
                             </div>
                             <div class="jq-tab-title " data-tab="4">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Image </span>
                                         <img src="{{ asset('images/image.png')}}" alt="Drive Icon">
 
@@ -79,7 +79,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="5">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Signature </span>
                                         <img src="{{ asset('images/sign.png')}}" alt="Drive Icon">
 
@@ -88,7 +88,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="6">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Water mark </span>
                                         <img src="{{ asset('images/water.png')}}" alt="Drive Icon">
 
@@ -97,7 +97,7 @@
                             </div>
                             <div class="jq-tab-title " data-tab="7">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops" onclick="blockout()">
                                         <span>Blockout</span>
                                         <img src="{{ asset('images/highlight.png')}}" alt="Drive Icon">
 
@@ -106,7 +106,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="8">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Search </span>
                                         <img src="{{ asset('images/search.png')}}" alt="Drive Icon">
 
@@ -116,7 +116,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="9">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Rotate </span>
                                         <img src="{{ asset('images/rotate.png')}}" alt="Drive Icon">
 
@@ -126,7 +126,7 @@
                             </div>
                             <div class="jq-tab-title " data-tab="10">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops" onclick="reset()">
                                         <span>Reset </span>
                                         <img src="{{ asset('images/reset.png')}}" alt="Drive Icon">
 
@@ -136,7 +136,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="11">
                                 <li>
-                                    <a href="#" class="drops" onclick="init()">
+                                    <a href="javascript:void(0)" class="drops" onclick="init()">
                                         <span>Draw </span>
                                         <img src="{{ asset('images/draw.png')}}" alt="Drive Icon">
 
@@ -146,7 +146,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="12">
                                 <li>
-                                    <a href="#" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Add Fillable fields </span>
                                         <img src="{{ asset('images/write.png')}}" alt="Drive Icon">
 
@@ -219,77 +219,77 @@
 
                         <div id="tab01" class="tab-contents">
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/T1.png')}}" alt="Drive Icon">
                                     <span>Text </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/simage.png')}}" alt="Drive Icon">
                                     <span>Image </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/link.png')}}" alt="Drive Icon">
                                     <span>Link </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops" onclick="drawLine()">
                                     <img src="{{ asset('images/line.png')}}" alt="Drive Icon">
                                     <span>Line </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/rectangle.png')}}" alt="Drive Icon">
                                     <span>Rectangle </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/check.png')}}" alt="Drive Icon">
                                     <span>Checkmark </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/Rectangle2.png')}}" alt="Drive Icon">
                                     <span>Form field </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/dir.png')}}" alt="Drive Icon">
                                     <span>Arrow </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/Ellipse.png')}}" alt="Drive Icon">
                                     <span>Circle </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/pencil.png')}}" alt="Drive Icon">
                                     <span>Freehand </span>
 
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="#" class="drops">
+                                <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/Whiteout.png')}}" alt="Drive Icon">
                                     <span>Whiteout </span>
 

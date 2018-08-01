@@ -6,7 +6,8 @@ $(function() {
         }
     });
 });
-
+/*
+init();
     var canvas, ctx, flag = false,
         prevX = 0,
         currX = 0,
@@ -36,7 +37,7 @@ $(function() {
         canvas.addEventListener("mouseout", function (e) {
             findxy('out', e)
         }, false);
-        document.getElementById('save_image').addEventListener('click', savePDF, false);
+       // document.getElementById('save_image').addEventListener('click', savePDF, false);
 
     }
     function savePDF(){
@@ -61,6 +62,7 @@ $(function() {
             y = 14;
 
     }
+
     function draw() {
         ctx.beginPath();
         ctx.moveTo(prevX, prevY);
@@ -76,12 +78,13 @@ $(function() {
             var  textover_api = this;
             drawText(textover_api);
         });
-
-
     }
-    function drawText(textover_api){
+    function drawLine(){
 
-
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(prevX+50, prevY+50);
+        ctx.stroke();
     }
     function reset() {
         var m = confirm("Want to clear");
@@ -128,7 +131,41 @@ $(function() {
             }
         }
     }
+*/
+var el = document.getElementById('can');
+var ctx = el.getContext('2d');
+var isDrawing;
+el.onmouseup = function() {
+    isDrawing = false;
 
+};
+function init() {
+    el.onmousedown = function (e) {
+        isDrawing = true;
+        ctx.moveTo(e.clientX, e.clientY);
+    };
+    el.onmousemove = function (e) {
+        if (isDrawing) {
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+        }
+    };
 
+   }
+function blockout() {
+    el.onmousedown = function(e) {
+        isDrawing = true;
+        ctx.lineWidth = 10;
+        ctx.lineJoin = ctx.lineCap = 'round';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgb(0, 0, 0)';
+        ctx.moveTo(e.clientX, e.clientY);
+    };
+    el.onmousemove = function(e) {
+        if (isDrawing) {
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+        }
+    };
 
-
+}

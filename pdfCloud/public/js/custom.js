@@ -114,6 +114,7 @@ $(document).ready(function() {
                             percent = Math.ceil(position / total * 100);
                         }
                         //update progressbar
+                        $('.form-wrap').show();
                         $(progress_bar_id + " .progress-bar").css("width", +percent + "%");
                         $(progress_bar_id + " .status").text(percent + "%");
                     }, true);

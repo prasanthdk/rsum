@@ -207,10 +207,11 @@
         color: #000000;
     }
 </style>
+
 <div id="myModal" class="modal fade upload_doc" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
-        <div class="modal-content">
+        <div class="modal-content upldoc">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -218,115 +219,89 @@
                 {{ Form::open(array('method'=>'post','class'=> 'upload-form','url' => '/store', 'id'=>'uploadForm' ,'enctype' => 'multipart/form-data')) }}
 
                 <div class="file-upload">
-
                     <div class="select_btn">
-                            <a class="file-upload-btn"  onclick="$('.file-upload-input').trigger( 'click' )">CHOOSE FILE</a>
-                            <p class="text-center">OR</p>
-                        </div>
-
-
-                        <div class="drive_upload text-center">
-                    <!-- <p>OR</p>
-                    <h3>Upload File From</h3> -->
-                    <ul class="list-inline list-unstyled drive_img">
-                        <div class="row">
-
-                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3 gledrive">
-                          <div class="driveicn">
-                                <li>
-                                     <a href="#">
-                                        <img src="{{ asset('images/Drive_icon.png') }}" alt="Drive Icon">
-                                        <span>Google drive</span>
-                                    </a>
-                                </li>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3 gledrive">
-                          <div class="driveicn">
-                                <li>
-                                     <a href="#" class="drops">
-                                        <img src="{{ asset('images/Box_icon.png') }}" alt="Drive Icon">
-                                        <span>Dropbox</span>
-                                    </a>
-                                </li>
-                            </div>
-                        </div>
-                       
-                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3 gledrive">
-                          <div class="driveicn">
-                                <li>
-                                     <a href="#" class="drops">
-                                        <img src="{{ asset('images/cloud_icon.png') }}" alt="Drive Icon">
-                                        <span>Onedrive</span>
-                                    </a>
-                                </li>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3">
-                          <div class="driveicn">
-                                <li>
-                                   <a href="#" class="drops boxic">
-                                        <img src="images/Box.png" alt="Drive Icon">                     
-                                    </a>
-                                </li>
-                          </div>
-                        </div>
-
-                        </div>
-                    </ul>
-                    <p class="chs">OR</p>
-                </div>
-
-
-                    <div class="image-upload-wrap">
-                        <input class="file-upload-input" type='file' name="_uploadFile" accept=".xlsx,.xls,image/*,.doc/*,.docx/*,.ppt,.pptx,.txt,.pdf" />
-                       <!--  <div class="drag-text">
-                            <h3>Drag and drop a file or select add Image</h3>
-                            <p>OR</p>
-                        </div> -->
-
-                        <ul class="list-inline arrows">
-                            <li><img src="images/arrow.png"></li>
-                            <li class="drps">Drag and drop files here</li>
-                        </ul>
-                        
+                        <a class="file-upload-btn" onclick="$('.file-upload-input').trigger( 'click' )">CHOOSE FILE</a>
+                        <br>
+                        <p class="text-center">OR</p>
                     </div>
-                </div>
-                {{ Form::close() }}
+                    <!-- <div class="drive_upload text-center"> -->
+                    <div class="text-center">
+                        <!-- <p>OR</p> -->
+                        <!-- <h3>Upload File From</h3> -->
+                        <ul class="list-inline list-unstyled drive_img">
+                            <div class="row">
 
-                <div class="form-wrap">
-                    <div id="progress-wrp"><div class="progress-bar"></div ><div class="status">0%</div></div>
+                                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3 gledrive">
+                                    <div class="driveicn">
+                                        <li>
+                                            <a href="#">
+                                                <img src="images/Drive_icon.png" alt="Drive Icon">
+                                                <span>Google drive</span>
+                                            </a>
+                                        </li>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3">
+                                    <div class="driveicn">
+                                        <li>
+                                            <a href="#" class="drops">
+                                                <img src="images/Box_icon.png" alt="Drive Icon">
+                                                <span>Dropbox</span>
+                                            </a>
+                                        </li>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3">
+                                    <div class="driveicn">
+                                        <li>
+                                            <a href="#" class="drops">
+                                                <img src="images/cloud_icon.png" alt="Drive Icon">
+                                                <span>Onedrive</span>
+                                            </a>
+                                        </li>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-3">
+                                    <div class="driveicn">
+                                        <li>
+                                            <a href="#" class="drops boxic">
+                                                <img src="images/Box.png" alt="Drive Icon">
+                                            </a>
+                                        </li>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ul>
+
+                        <p class="chs">OR</p>
+                    </div>
+                    <div class="image-upload-wrap">
+                        <input class="file-upload-input" type='file' onchange="readURL(this);"  name="_uploadFile" accept=".xlsx,.xls,image/*,.doc/*,.docx/*,.ppt,.pptx,.txt,.pdf" />
+                        <div class="drag-text">
+                            <!-- <img src="images/arrow.png">
+                            <h3>Drops File Here</h3> -->
+                            <ul class="list-inline arrows">
+                                <li><img src="images/arrow.png">
+                                    <!-- <i class="fa fa-arrow-up" aria-hidden="true"></i> -->
+                                </li>
+                                <li class="drps">Drag and drop files here</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {{ Form::close() }}
+                <div class="form-wrap" style="display: none;">
+                    <div id="progress-wrp"><div class="progress-bar progress-bar-striped"></div ><div class="status">0%</div></div>
                     <div id="output"><!-- error or success results --></div>
                 </div>
-
-
-                <!-- <div class="drive_upload text-center">
-                    <p>OR</p>
-                    <h3>Upload File From</h3>
-                    <ul class="list-inline list-unstyled drive_img">
-                        <li>
-                            <a href="#">
-                                <img src="{{ asset('images/Box_icon.png') }}" alt="Drive Icon">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{ asset('images/Drive_icon.png') }}" alt="Drive Icon">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{ asset('images/cloud_icon.png') }}" alt="Drive Icon">
-                            </a>
-                        </li>
-                    </ul>
-                </div> -->
-
             </div>
         </div>
     </div>
 </div>
+
 
 @endsection
