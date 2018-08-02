@@ -39,58 +39,23 @@ function readURL(input) {
     });
 /********File upload********/
 $(document).ready(function() {
-/*
-    $('#uploadForm').on('change', function () {
 
-        var progress_bar_id = '#progress-wrp';
-        var form = $('#uploadForm')[0];
-        var formData = new FormData(form);
-        $.ajax({
-            url: APP_URL + '/store',
-            type: "POST",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            xhr: function () {
-                //upload Progress
-                var xhr = $.ajaxSettings.xhr();
-                if (xhr.upload) {
-                    xhr.upload.addEventListener('progress', function (event) {
-                        var percent = 0;
-                        var position = event.loaded || event.position;
-                        var total = event.total;
-                        if (event.lengthComputable) {
-                            percent = Math.ceil(position / total * 100);
-                        }
-                        //update progressbar
-                        $(progress_bar_id + " .progress-bar").css("width", +percent + "%");
-                        $(progress_bar_id + " .status").text(percent + "%");
-                    }, true);
-                }
-                return xhr;
-            },
-            mimeType: "multipart/form-data"
-        }).done(function (res) {
-            var data = JSON.parse(res);
+    /****** Open modal*******/
+    $("#myBtn").click(function(){
+        var file_id = localStorage.getItem('file_id');
+        if(file_id){
+            $('#myModal').modal({
+                show: 'false'
+            });
+            window.location.href = APP_URL + "/" + file_id + '/edit';
+        }else {
 
-            if(data.message =='Success'){
-                window.location.href=APP_URL+"/edit/";
-            }
-            /!*$(my_form_id)[0].reset(); //reset form
-            $(result_output).html(res); //output response from server
-            submit_btn.val("Upload").prop("disabled", false); //enable submit button once ajax is done*!/
-        });
+        }
+        localStorage.setItem('file_id', "");
     });
-*/
-
-
-   // $('#color').colorpicker({});
-
+    /*******File upload*****/
     $('#uploadForm').on('change', function () {
 
-        /*   var file_id = localStorage.getItem('file_id');
-           alert(file_id)*/
         var progress_bar_id = '#progress-wrp';
         var form = $('#uploadForm')[0];
         var formData = new FormData(form);
@@ -125,15 +90,16 @@ $(document).ready(function() {
         }).done(function (res) {
             var data = JSON.parse(res);
 
-            if(data.message ==='Success'){
+            if (data.message === 'Success') {
                 localStorage.setItem('file_id', data.file_id);
-                window.location.href=APP_URL+"/"+data.file_id+'/edit';
+                window.location.href = APP_URL + "/" + data.file_id + '/edit';
             }
             /*$(my_form_id)[0].reset(); //reset form
             $(result_output).html(res); //output response from server
             submit_btn.val("Upload").prop("disabled", false); //enable submit button once ajax is done*/
         });
     });
+
     $('.save_image').on('click', function () {
         var options = {
         };

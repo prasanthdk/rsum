@@ -42,7 +42,7 @@
                             </div>
                             <div class="jq-tab-title active" data-tab="1">
                                 <li>
-                                    <a href="javascript:void(0)"  onclick="text()" class="drops">
+                                    <a href="javascript:void(0)" class="drops">
                                         <span>Text </span>
                                         <img src="{{ asset('images/text.png')}}" alt="Drive Icon">
 
@@ -51,7 +51,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="2">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops" onclick="erase('#ffffff')">
+                                    <a href="javascript:void(0)" class="drops eraser">
                                         <span>Erase </span>
                                         <img src="{{ asset('images/erase.png')}}" alt="Drive Icon">
 
@@ -97,7 +97,7 @@
                             </div>
                             <div class="jq-tab-title " data-tab="7">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops" onclick="blockout()">
+                                    <a href="javascript:void(0)" class="drops blockout" >
                                         <span>Blockout</span>
                                         <img src="{{ asset('images/highlight.png')}}" alt="Drive Icon">
 
@@ -136,7 +136,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="11">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops" onclick="init()">
+                                    <a href="javascript:void(0)" class="drops pencil">
                                         <span>Draw </span>
                                         <img src="{{ asset('images/draw.png')}}" alt="Drive Icon">
 
@@ -177,7 +177,7 @@
 
                         @foreach($temp_files as $key => $temp_files_list)
 
-                        <div class="jq-tab-title " data-tab="{{$key}}">
+                        <div class="jq-tab-title page_title" data-tab="{{ $temp_files_list->id }}">
                             <img src="{{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }}" class="img-responsive docimg"></div>
 
                         @endforeach
@@ -188,11 +188,13 @@
                     <div class="jq-tab-content-wrapper ">
                         @foreach($temp_files as $key => $temp_files_list)
 
-                        <div class="jq-tab-content {{ $key == 0 ? 'active' : '' }}" data-tab="{{ $key}}">
-                           <!-- <img src="{{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }}" class="img-responsive">-->
-                            <canvas id="can" class="can" width="1000px" height="1294"
-                                    style="background: url({{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }})
-                    no-repeat center center;"></canvas>
+                        <div class="jq-tab-content {{ $key == 0 ? 'active' : '' }}" data-tab="{{ $temp_files_list->id }}">
+                            <div class="col-sm-12" >
+                                <canvas id="can_{{ $temp_files_list->id }}" class="can" width="700" height="1200"
+                                        style="padding:10px;margin:0px;background: url({{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }})
+                    no-repeat center center;">
+                                </canvas>
+                            </div>
                         </div>
                         @endforeach
 

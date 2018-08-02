@@ -39,6 +39,19 @@ h6 {
     padding: 0;
 }
 
+.circle-img
+{
+    width: 120px;
+    height: 120px;
+    box-shadow: 1px 3px 10px 0px #888888;
+    border-radius: 100%;
+    margin: 0 auto;
+}
+.circle-content
+{
+    padding: 10px 10px;
+    font-size: 14px;
+}
 
 /* Back to top button */
 

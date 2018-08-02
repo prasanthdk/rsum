@@ -132,40 +132,121 @@ init();
         }
     }
 */
-var el = document.getElementById('can');
-var ctx = el.getContext('2d');
-var isDrawing;
-el.onmouseup = function() {
-    isDrawing = false;
+$(document).ready(function(){
 
-};
-function init() {
-    el.onmousedown = function (e) {
-        isDrawing = true;
-        ctx.moveTo(e.clientX, e.clientY);
-    };
-    el.onmousemove = function (e) {
-        if (isDrawing) {
-            ctx.lineTo(e.clientX, e.clientY);
+        var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
+        var page_id ="";
+
+        var x = "black",
+        y = 2;
+
+        $('.page_title').on('click',function () {
+            page_id = 'can_'+$(this).attr("data-tab");
+            canvas = document.getElementById(page_id);
+            ctx = canvas.getContext("2d");
+            y = 2;
+            canvas.addEventListener("mousemove", function (e) {
+                findxy('move', e)
+            }, false);
+            canvas.addEventListener("mousedown", function (e) {
+                findxy('down', e)
+            }, false);
+            canvas.addEventListener("mouseup", function (e) {
+                findxy('up', e)
+            }, false);
+            canvas.addEventListener("mouseout", function (e) {
+                findxy('out', e)
+            }, false);
+        });
+
+        page_id = $("canvas:first").attr('id');
+        canvas = document.getElementById(page_id);
+        ctx = canvas.getContext("2d");
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+
+
+        $('.pencil').on('click',function () {
+            y = 2;
+            x = '#000';
+            ctx.shadowColor = "transparent";
+            ctx.beginPath();
+            ctx.moveTo(prevX, prevY);
             ctx.stroke();
-        }
-    };
+        });
 
-   }
-function blockout() {
-    el.onmousedown = function(e) {
-        isDrawing = true;
-        ctx.lineWidth = 10;
-        ctx.lineJoin = ctx.lineCap = 'round';
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgb(0, 0, 0)';
-        ctx.moveTo(e.clientX, e.clientY);
-    };
-    el.onmousemove = function(e) {
-        if (isDrawing) {
-            ctx.lineTo(e.clientX, e.clientY);
+        $('.blockout').on('click',function () {
+
+            y = 12;
+            x = '#000';
+            ctx.shadowBlur = 8;
+            ctx.lineJoin = ctx.lineCap = 'square';
+            ctx.shadowColor = 'rgb(0, 0, 0)';
+            ctx.beginPath();
+            ctx.moveTo(prevX, prevY);
+            ctx.lineTo(prevX, prevY);
             ctx.stroke();
-        }
-    };
+        });
+        $('.eraser').on('click',function () {
+            x = '#ffffff';
+            y = 14;
+        });
 
-}
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+                draw();
+            }
+        }
+    }
+
+
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+    }
+});
+

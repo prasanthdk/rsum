@@ -22,22 +22,12 @@
     <link href="{{ URL::asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('sweetalert/dist/sweetalert2.min.css')}}">
+
     <!-- Main Stylesheet File -->
     <link href="{{ URL::asset('css/style.css')}}" rel="stylesheet">
     <style type="text/css">
-        .circle-img
-        {
-            width: 120px;
-            height: 120px;
-            box-shadow: 1px 3px 10px 0px #888888;
-            border-radius: 100%;
-            margin: 0 auto;
-        }
-        .circle-content
-        {
-            padding: 10px 10px;
-            font-size: 14px;
-        }
+
     </style>
 </head>
 <body id="body">
@@ -131,7 +121,7 @@
 <!-- Contact Form JavaScript File -->
 <!-- <script src="{{ URL::asset('contactform/contactform.js')}}"></script> -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+<script src="{{ URL::asset('sweetalert/dist/sweetalert2.min.js')}}"></script>
 <script>
     var APP_URL = {!! json_encode(url('/')) !!};
 </script>

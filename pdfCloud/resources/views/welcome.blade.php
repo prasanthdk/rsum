@@ -15,11 +15,10 @@
                         <p>PDFCloud is your all in one solution for editing and converting PDF documents.
                             Now offering unlimited cloud storage for all users. Click Upload Document to get started today.
                         </p>
-                        <a href="javascript:void(0);" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal"><i class="fa fa-cloud-upload"></i> Upload Document</a>
+                        <a href="javascript:void(0);" class="btn btn-primary btn-lg"  id="myBtn" data-toggle="modal" data-target="#myModal"><i class="fa fa-cloud-upload"></i> Upload Document</a>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
     <!--==========================
@@ -207,7 +206,6 @@
         color: #000000;
     }
 </style>
-
 <div id="myModal" class="modal fade upload_doc" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
