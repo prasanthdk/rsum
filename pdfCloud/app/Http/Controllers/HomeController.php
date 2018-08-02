@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Imagick;
 use Intervention\Image\Facades\Image;
 //use function MongoDB\BSON\toJSON;
+
+use App\Http\Controllers\FileConversionController;
+
 class HomeController extends Controller
 {
     /**
@@ -17,7 +20,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         return view('welcome');
     }
 
@@ -39,39 +41,93 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $key = '0000....11112222';
-        $getfileName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
-        $output_dir = public_path('uploads\\original_file\\').$getfileName;
 
-        if ($request->_uploadFile->move(public_path('uploads\\original_file\\'), $getfileName)) {
+        $file_id = $key = $create_converted_file = '';
+        if ($request->hasFile('_uploadFile')) {//check file posted
+        
+            $ext = $request->_uploadFile->getClientOriginalExtension();
+            $ext_array = array("pdf","png","jpg");
+            if($request->input('pdf_cloud_action'))
+            {
+                
+                if(in_array($ext,$ext_array))
+                {
+                    $key = '0000....11112222';
+                    $getfileName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
+                    $output_dir = public_path('uploads\\original_file\\').$getfileName;
 
-            $im = new imagick($output_dir);
-            $noOfPagesInPDF = $im->getNumberImages();
-            $tempfile = TempFiles::create(['file_name'=>$getfileName,'status'=>'1']);
-            $file_id = $tempfile->id;
-            if ($noOfPagesInPDF) {
+                    if ($request->_uploadFile->move(public_path('uploads\\original_file\\'), $getfileName)) {
 
-                for ($i = 0; $i < $noOfPagesInPDF; $i++) {
+                        $im = new imagick($output_dir);
+                        $noOfPagesInPDF = $im->getNumberImages();
+                        $tempfile = TempFiles::create(['file_name'=>$getfileName,'status'=>'1']);
+                        $file_id = $tempfile->id;
+                        if ($noOfPagesInPDF) {
 
-                    $image_name = ($i+1).'-'.time().'.png';
+                            for ($i = 0; $i < $noOfPagesInPDF; $i++) {
 
-                    $url = $output_dir.'['.$i.']';
+                                $image_name = ($i+1).'-'.time().'.png';
 
-                    $image = new Imagick($url);
-                   // $image->scaleImage(2550,3300);
-                    $image->setResolution(300,300);
-                    $image->readImage(public_path("uploads\original_file\\".$getfileName."[".$i."]"));
-                    $image->scaleImage(1000,0);
-//set new format
-                    $image->setImageFormat('png');
-                    $image->writeImage(public_path("/uploads/convert_file/".$image_name));
+                                $url = $output_dir.'['.$i.']';
 
-                    TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'status'=>'1']);
-                }
+                                $image = new Imagick($url);
+                               // $image->scaleImage(2550,3300);
+                                $image->setResolution(300,300);
+                                $image->readImage(public_path("uploads\original_file\\".$getfileName."[".$i."]"));
+                                $image->scaleImage(1000,0);
+                                //set new format
+                                $image->setImageFormat('png');
+                                $image->writeImage(public_path("/uploads/convert_file/".$image_name));
+
+                                $create_converted_file = TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'status'=>'1']);
+                            }
+                        }
+                        $status = TRUE;
+                    }
+                }else{
+
+                    $status = FALSE;
+                    $message = "Invalid file format received.";
+
+                    // return response()->json(['status' => $status,'message' => $message]);
+
+                    }
+                    //------------------------------------------------conversion
+                    $post_data = $request->input();
+                    //--------------------------------
+                    if($post_data['pdf_cloud_action'] == 'convert' && $create_converted_file != '')
+                    {
+                           $response =  FileConversionController::convert($post_data,$create_converted_file);
+
+                           if($response){
+                             $status = TRUE;
+                            }else{
+                             $status = FALSE;
+                            }
+                            $message = "File converted successfully.";
+
+                    }else if($post_data['pdf_cloud_action'] == 'compress'){
+
+                    }else
+                    {
+                        $status = FALSE;
+                        $message = "Invalid request received.";
+                    }
+                    //------------------------------
             }
-            $response = "Success";
+            else
+            {
+                $status = FALSE;
+                $message = "Invalid request received.";
+
+            }
+
+        }else{
+            $status = FALSE;
+            $message = "No file submitted.";
         }
-        return response()->json(['message' => $response,'file_id' => encrypt($file_id,$key)]);
+        //--------------------------------------------------------------------------------response
+        return response()->json(['status' => $status, 'file_id' => encrypt($file_id,$key),'message' => $message]);
 
     }
 
@@ -94,7 +150,6 @@ class HomeController extends Controller
      */
     public function edit($file_id)
     {
-
         $temp_files = TempConvertFiles::where('file_id','=',decrypt($file_id))->orderBy('created_at','asc')->get();
 
        return view('edit_file',compact('temp_files'));

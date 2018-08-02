@@ -53,6 +53,22 @@ $(document).ready(function() {
         }
         localStorage.setItem('file_id', "");
     });
+
+    //--------------------------------------home bottom buttons
+   $(".pdf_home_actions").on('click',function(e){
+
+    var action = $(this).attr("data-action");
+
+    var convert_into =$(this).attr("data-action");
+
+    if(action == 'convert' && convert_into != '')
+    {
+        $("#pdf_cloud_Cto").val(convert_into);
+    }
+
+    $("#pdf_cloud_action").val(action);
+   });
+   //---------------------------------------------------------
     /*******File upload*****/
     $('#uploadForm').on('change', function () {
 
