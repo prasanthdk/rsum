@@ -34,7 +34,7 @@
 
                             <p class="text-left accs">Already have an account ?</p>
 
-                            <a href="" style="text-align: right;"><p class="text-left accs logs">Login</p></a>
+                            <a href="{{url('login')}}" style="text-align: right;"><p class="text-left accs logs">Login</p></a>
                           </div>
                       <div class="form-group btncnt">    
                     <button type="submit" class="btn countinue" id="pdf_register_btn">Continue</button>

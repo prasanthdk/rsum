@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <div class="row text-center">
                                         <div class="col-md-12 col-sm-12">
-                                            <label>No account ?<span><a href=""> Signup</a></span></label>
+                                            <label>No account ?<span><a href="{{url('register')}}"> Signup</a></span></label>
                                         </div>
                                     </div>
                                 </div>

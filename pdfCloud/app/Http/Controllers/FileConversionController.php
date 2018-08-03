@@ -54,7 +54,8 @@ class FileConversionController extends Controller
 
 	public static function convert_into_image($request)
 	{
-				
+					$purpose_type = '';
+					$purpose = '1';
                     $getfileName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
                     $output_dir = public_path('uploads\\original_file\\').$getfileName;
 
@@ -62,7 +63,19 @@ class FileConversionController extends Controller
 
                         $im = new imagick($output_dir);
                         $noOfPagesInPDF = $im->getNumberImages();
-                        $tempfile = TempFiles::create(['file_name'=>$getfileName,'status'=>'1']);
+
+                        if($request->input('pdf_cloud_action') == 'edit'){
+                        	$purpose = '1';
+                        	$purpose_type = 'pdf';
+                        }else if($request->input('pdf_cloud_action') == 'convert'){
+                        	$purpose = '2';
+                        	$purpose_type = $request->input('pdf_cloud_Cto');
+                        }else if($request->input('pdf_cloud_action') == 'compress'){
+                        	$purpose = '3';
+                        	$purpose_type = 'pdf';
+                        }
+
+                        $tempfile = TempFiles::create(['file_name'=>$getfileName,'purpose' => $purpose,'purpose_type' => $purpose_type,'status'=>'1']);
                         $file_id = $tempfile->id;
                         if ($noOfPagesInPDF) {
 
