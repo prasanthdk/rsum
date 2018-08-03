@@ -79,7 +79,7 @@ class FileConversionController extends Controller
                                 $image->scaleImage(1000,0);
                                 //set new format
                                 $image->setImageFormat('png');
-                                $image->writeImage(public_path("/uploads/convert_file/".$image_name));
+                                $image->writeImage(public_path("uploads\convert_file\\".$image_name));
 
                                 $create_converted_file = TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'status'=>'1']);
                             }

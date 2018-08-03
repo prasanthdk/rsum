@@ -143,11 +143,11 @@ $(document).ready(function(){
         var page_id ="";
 
         var x = "black",
-        y = 2;
+        y = 3;
 
         $('.page_title').on('click',function () {
             x = "black",
-            y = 2;
+            y = 3;
             page_id = 'can_'+$(this).attr("data-tab");
             canvas = document.getElementById(page_id);
             ctx = canvas.getContext("2d");
@@ -163,31 +163,38 @@ $(document).ready(function(){
             canvas.addEventListener("mouseout", function (e) {
                 findxy('out', e)
             }, false);
+            canvas.width = $("#parent").width();
+            canvas.height = $("#parent").height();
+
+
         });
-            page_id = $("canvas:first").attr('id');
-            canvas = document.getElementById(page_id);
-            ctx = canvas.getContext("2d");
-            canvas.addEventListener("mousemove", function (e) {
-                findxy('move', e)
-            }, false);
-            canvas.addEventListener("mousedown", function (e) {
-                findxy('down', e)
-            }, false);
-            canvas.addEventListener("mouseup", function (e) {
-                findxy('up', e)
-            }, false);
-            canvas.addEventListener("mouseout", function (e) {
-                findxy('out', e)
-            }, false);
+                page_id = $("canvas:first").attr('id');
+                canvas = document.getElementById(page_id);
+                ctx = canvas.getContext("2d");
+                canvas.addEventListener("mousemove", function (e) {
+                    findxy('move', e)
+                }, false);
+                    canvas.addEventListener("mousedown", function (e) {
+                        findxy('down', e)
+                    }, false);
 
-
+                canvas.addEventListener("mouseup", function (e) {
+                    findxy('up', e)
+                }, false);
+                canvas.addEventListener("mouseout", function (e) {
+                    findxy('out', e)
+                }, false);
+                canvas.width = $("#parent").width();
+                canvas.height = $("#parent").height();
 
 
         $('.pencil').on('click',function () {
-            y = 2;
+            y = 3;
             x = '#000000';
             ctx.globalAlpha =1;
             ctx.shadowColor = "transparent";
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
             ctx.beginPath();
             ctx.moveTo(prevX, prevY);
             ctx.stroke();
@@ -221,6 +228,21 @@ $(document).ready(function(){
             ctx.moveTo(prevX, prevY);
             ctx.lineTo(prevX, prevY);
             ctx.stroke();
+        });
+
+        $('.circle').on('click',function () {
+            var radius=8;
+            x = "transparent";
+
+            var putPoint = function(e){
+
+                ctx.beginPath();
+                ctx.arc(e.clientX, e.clientY, radius, 0, Math.PI*2);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = "#000";
+                ctx.stroke();
+            }
+            canvas.addEventListener('mousedown',putPoint);
         });
 
 
@@ -267,8 +289,24 @@ $(document).ready(function(){
     }
 
     $('.lineTool').on('click',function () {
-        init();
+        var mouse = {x: 0, y: 0};
+        var last_mouse = {x: 0, y: 0};
 
+        /* Mouse Capturing Work */
+        canvas.addEventListener('mousemove', function(e) {
+            last_mouse.x = mouse.x;
+            last_mouse.y = mouse.y;
+
+            mouse.x = e.pageX - this.offsetLeft;
+            mouse.y = e.pageY - this.offsetTop;
+        }, false);
+        var onPaint = function() {
+            ctx.beginPath();
+            ctx.moveTo(last_mouse.x, last_mouse.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.closePath();
+            ctx.stroke();
+        };
     });
 });
 

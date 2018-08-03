@@ -189,9 +189,9 @@
                         @foreach($temp_files as $key => $temp_files_list)
 
                         <div class="jq-tab-content {{ $key == 0 ? 'active' : '' }}" data-tab="{{ $temp_files_list->id }}">
-                            <div class="col-sm-12" >
+                            <div class="" id="parent" style="width: 1000px;height:1294px">
                                 <canvas id="can_{{ $temp_files_list->id }}" class="can" width="700" height="1200"
-                                        style="padding:10px;margin:0px;background: url({{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }})
+                                            style="width:100%;height:100%;background: url({{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }})
                     no-repeat center center;">
                                 </canvas>
                             </div>
@@ -277,7 +277,7 @@
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="javascript:void(0)" class="drops">
+                                <a href="javascript:void(0)" class="drops circle">
                                     <img src="{{ asset('images/Ellipse.png')}}" alt="Drive Icon">
                                     <span>Circle </span>
 

@@ -61,7 +61,9 @@
 
 .jq-tab-content {
   display: none;
-  padding: 3em 4em;
+    /*
+    padding: 0em 4em;
+    */
     text-align: justify;}
   .jq-tab-content.active {
     display: block; }

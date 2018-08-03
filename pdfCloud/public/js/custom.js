@@ -52,7 +52,7 @@ $(document).ready(function() {
         }else {
 
         }
-        localStorage.setItem('file_id', "");
+        //localStorage.setItem('file_id', "");
     });
 
     //--------------------------------------home bottom buttons
