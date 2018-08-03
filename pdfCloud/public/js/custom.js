@@ -7,6 +7,7 @@ $(function() {
     });
 });
 // alert(0);
+
 function readURL(input) {
       if (input.files && input.files[0]) {
 
@@ -59,9 +60,9 @@ $(document).ready(function() {
 
     var action = $(this).attr("data-action");
 
-    var convert_into =$(this).attr("data-action");
+    var convert_into =$(this).attr("data-convert-to");
 
-    if(action == 'convert' && convert_into != '')
+    if(convert_into != '')
     {
         $("#pdf_cloud_Cto").val(convert_into);
     }
@@ -106,13 +107,38 @@ $(document).ready(function() {
         }).done(function (res) {
             var data = JSON.parse(res);
 
-            if (data.message === 'Success') {
-                localStorage.setItem('file_id', data.file_id);
-                window.location.href = APP_URL + "/" + data.file_id + '/edit';
+            // if (data.message === 'Success') {
+            //     localStorage.setItem('file_id', data.file_id);
+            //     window.location.href = APP_URL + "/" + data.file_id + '/edit';
+            // }
+            if (data.status){
+                if(data.action == 'edit') {
+
+                    localStorage.setItem('file_id', data.file_id);
+                    window.location.href = APP_URL + "/" + data.file_id + '/edit';
+
+                }else if (!data.auth && data.action != 'edit') 
+                {
+                    swal({
+                    title: "Success",
+                    text: "Please login/signup to get your file.",
+                    type: "success",
+                    }).then(function() {
+                       window.location.href = APP_URL + "/login";
+                    });
+                   
+                }else if(data.auth){
+                    window.location.href = APP_URL + "/png_to_pdf";
+                }
+            }else
+            {
+                swal({
+                    title: "Oops!",
+                    text: data.message,
+                    type: "error",
+                });
             }
-            /*$(my_form_id)[0].reset(); //reset form
-            $(result_output).html(res); //output response from server
-            submit_btn.val("Upload").prop("disabled", false); //enable submit button once ajax is done*/
+            
         });
     });
 
@@ -141,32 +167,20 @@ $(document).ready(function() {
                         success: function(data){
                             
                             if(data.status) {
-                                alert(data.message);
-                                // $( "#la-ajaxloader" ).hide();
-                                // $("#registerForm")[0].reset();
-                                // $("#registration-response").html('<div class="alert alert-success alert-white rounded"> ' +
-                                //     '<button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button> ' +
-                                //     '<div class="icon"> <i class="fa fa-check"></i> </div>'+data.message+'</div>');
-                                // window.setTimeout(function () {
-                                //     $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
-                                //         $(this).remove();
-                                //     });
-                                // }, 5000);
+                                swal({
+                                  title: "Success!",
+                                  text: data.message,
+                                  icon: "success",
+                                });
                             }else{
 
                                 
-                                    alert(data.message);
+                                    swal({
+                                      title: "Oops!",
+                                      text: data.message,
+                                      icon: "error",
+                                    });
                                 
-                                // $( "#la-ajaxloader" ).hide();
-                                // $("#registration-response").html('<div class="alert alert-danger alert-white rounded"> ' +
-                                //     '<button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button> ' +
-                                //     '<div class="icon"> <i class="fa fa-times"></i> </div>'+data.message+'</div>');
-
-                                // window.setTimeout(function () {
-                                //     $(".alert-danger").fadeTo(500, 0).slideUp(500, function () {
-                                //         $(this).remove();
-                                //     });
-                                // }, 5000);
                             }
 
                         },
@@ -198,18 +212,13 @@ $(document).ready(function() {
                             }else{
 
                                 
-                                    alert(data.message);
+                                    swal({
+                                      title: "Oops!",
+                                      text: data.message,
+                                      icon: "error",
+                                    });
                                 
-                                // $( "#la-ajaxloader" ).hide();
-                                // $("#registration-response").html('<div class="alert alert-danger alert-white rounded"> ' +
-                                //     '<button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button> ' +
-                                //     '<div class="icon"> <i class="fa fa-times"></i> </div>'+data.message+'</div>');
-
-                                // window.setTimeout(function () {
-                                //     $(".alert-danger").fadeTo(500, 0).slideUp(500, function () {
-                                //         $(this).remove();
-                                //     });
-                                // }, 5000);
+                                
                             }
 
                         },

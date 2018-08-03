@@ -7,6 +7,7 @@ use App\TempFiles;
 use Illuminate\Http\Request;
 use Imagick;
 use Intervention\Image\Facades\Image;
+use Auth;
 //use function MongoDB\BSON\toJSON;
 
 use App\Http\Controllers\FileConversionController;
@@ -42,78 +43,85 @@ class HomeController extends Controller
     public function store(Request $request)
     {
 
-        $file_id = $key = $create_converted_file = '';
+        $file_id = $key = $create_converted_file = $message = '';
+        $key = '0000....11112222';
+
+        $user_auth = (Auth::check()) ? TRUE : FALSE;
+
         if ($request->hasFile('_uploadFile')) {//check file posted
         
             $ext = $request->_uploadFile->getClientOriginalExtension();
-            $ext_array = array("pdf","png","jpg");
+            $ext_array = array("pdf","png","jpg","txt");
             if($request->input('pdf_cloud_action'))
             {
-                
-                if(in_array($ext,$ext_array))
-                {
-                    $key = '0000....11112222';
-                    $getfileName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
-                    $output_dir = public_path('uploads\\original_file\\').$getfileName;
 
-                    if ($request->_uploadFile->move(public_path('uploads\\original_file\\'), $getfileName)) {
+                //------------------------------------------------conversion
+                $post_data = $request->input();
+                //--------------------------------
+                switch ($post_data['pdf_cloud_Cto']) {
 
-                        $im = new imagick($output_dir);
-                        $noOfPagesInPDF = $im->getNumberImages();
-                        $tempfile = TempFiles::create(['file_name'=>$getfileName,'status'=>'1']);
-                        $file_id = $tempfile->id;
-                        if ($noOfPagesInPDF) {
-
-                            for ($i = 0; $i < $noOfPagesInPDF; $i++) {
-
-                                $image_name = ($i+1).'-'.time().'.png';
-
-                                $url = $output_dir.'['.$i.']';
-
-                                $image = new Imagick($url);
-                               // $image->scaleImage(2550,3300);
-                                $image->setResolution(300,300);
-                                $image->readImage(public_path("uploads\original_file\\".$getfileName."[".$i."]"));
-                                $image->scaleImage(1000,0);
-                                //set new format
-                                $image->setImageFormat('png');
-                                $image->writeImage(public_path("/uploads/convert_file/".$image_name));
-
-                                $create_converted_file = TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'status'=>'1']);
-                            }
+                    case 'edit_pdf':
+                    $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
+                    if($validate_ext == "true")
+                    {
+                        $convert_into_image = FileConversionController::convert_into_image($request);
+                        if($convert_into_image['status'] && $validate_ext == "true")
+                        {
+                            $file_id = $convert_into_image->file_id;
+                            $status = TRUE;
+                            
                         }
-                        $status = TRUE;
+
+                    }else{
+                        $status = FALSE;
+                        $message = "Invalid file format. Please upload a pdf file.";
                     }
-                }else{
+                    
+                    break;
+                    case 'png_pdf':
 
-                    $status = FALSE;
-                    $message = "Invalid file format received.";
+                        $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
+                        
+                        if($validate_ext == "true")
+                        {
+                            $convert_into_image = FileConversionController::convert_into_image($request);
 
-                    // return response()->json(['status' => $status,'message' => $message]);
+                            if($convert_into_image != '' )
+                            {
+                                 $response =  FileConversionController::convert($post_data,$convert_into_image);
 
-                    }
-                    //------------------------------------------------conversion
-                    $post_data = $request->input();
-                    //--------------------------------
-                    if($post_data['pdf_cloud_action'] == 'convert' && $create_converted_file != '')
-                    {
-                           $response =  FileConversionController::convert($post_data,$create_converted_file);
-
-                           if($response){
-                             $status = TRUE;
+                                   if($response){
+                                     $status = TRUE;
+                                     $message = "File converted successfully.";
+                                    }else{
+                                     $status = FALSE;
+                                     $message = "Oops! Something went wrong. Please try agin later.";
+                                    }
+                                
                             }else{
-                             $status = FALSE;
+                                $status = FALSE;
+                                $message = "Oops! Something went wrong. Please try again later.";
                             }
-                            $message = "File converted successfully.";
+                           
+                        }else{
 
-                    }else if($post_data['pdf_cloud_action'] == 'compress'){
+                            $status = FALSE;
+                            $message = ($validate_ext == "false") ? "Invalid file format.  Please upload a png file." : "Oops! Something went wrong. Please try again later.";
+                        }
 
-                    }else
-                    {
+                    break;
+                    case 'jpg_pdf':
+
+                    break;
+                    case 'text_pdf':
+
+                    break;
+                    default:
                         $status = FALSE;
                         $message = "Invalid request received.";
-                    }
-                    //------------------------------
+                        break;
+                }
+                    
             }
             else
             {
@@ -127,7 +135,7 @@ class HomeController extends Controller
             $message = "No file submitted.";
         }
         //--------------------------------------------------------------------------------response
-        return response()->json(['status' => $status, 'file_id' => encrypt($file_id,$key),'message' => $message]);
+        return response()->json(['status' => $status, 'file_id' => encrypt($file_id,$key),'message' => $message,'auth' => $user_auth,'action' => $post_data['pdf_cloud_action']]);
 
     }
 
@@ -187,5 +195,23 @@ class HomeController extends Controller
 
         $image = Image::make($request->get('imgBase64'));
         $image->save(public_path('/uploads/bar.jpg'));
+    }
+
+    public function check_file_extension($ext,$type)
+    {
+        // echo $type."***".$ext;die;
+        $return = "false";
+        if($type == 'edit_pdf' && $ext == 'pdf'){
+            $return  = "true";
+        }else if($type == 'png_pdf' && $ext == 'png'){
+            $return  = "true";
+        }else if($type == 'jpg_pdf' && ($ext == 'jpg' || $ext == 'jpeg')){
+            $return  = "true";
+        }else if($type == 'text_pdf' && $ext == 'text'){
+            $return  = "true";
+        }
+        //------------
+        return $return;
+
     }
 }

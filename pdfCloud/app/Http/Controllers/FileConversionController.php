@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Imagick;
 use Illuminate\Support\Facades\Storage;
+use App\TempFiles;
+use App\TempConvertFiles;
 
 class FileConversionController extends Controller
 {
@@ -34,6 +36,8 @@ class FileConversionController extends Controller
 
 	}
 
+
+
 	public static function convert($request,$imgfile)
 	{
 		$img = new Imagick(public_path().'/uploads/convert_file/'.$imgfile->convert_file_name);
@@ -42,11 +46,61 @@ class FileConversionController extends Controller
 		$ext = pathinfo(public_path().'/uploads/convert_file/'.$imgfile->convert_file_name, PATHINFO_EXTENSION);
 		$filename = pathinfo(public_path().'/uploads/convert_file/'.$imgfile->convert_file_name, PATHINFO_FILENAME);
 		
-		$success = $img->writeImage(storage_path('pdf').'/'.$filename.'.pdf');
+		$response = $img->writeImage(storage_path('pdf').'/'.$filename.'.pdf');
 
-		return $success;
+		return $response;
 
 	}
+
+	public static function convert_into_image($request)
+	{
+				
+                    $getfileName = time().'.'.$request->_uploadFile->getClientOriginalExtension();
+                    $output_dir = public_path('uploads\\original_file\\').$getfileName;
+
+                    if ($request->_uploadFile->move(public_path('uploads\\original_file\\'), $getfileName)) {
+
+                        $im = new imagick($output_dir);
+                        $noOfPagesInPDF = $im->getNumberImages();
+                        $tempfile = TempFiles::create(['file_name'=>$getfileName,'status'=>'1']);
+                        $file_id = $tempfile->id;
+                        if ($noOfPagesInPDF) {
+
+                            for ($i = 0; $i < $noOfPagesInPDF; $i++) {
+
+                                $image_name = ($i+1).'-'.time().'.png';
+
+                                $url = $output_dir.'['.$i.']';
+
+                                $image = new Imagick($url);
+                               // $image->scaleImage(2550,3300);
+                                $image->setResolution(300,300);
+                                $image->readImage(public_path("uploads\original_file\\".$getfileName."[".$i."]"));
+                                $image->scaleImage(1000,0);
+                                //set new format
+                                $image->setImageFormat('png');
+                                $image->writeImage(public_path("/uploads/convert_file/".$image_name));
+
+                                $create_converted_file = TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'status'=>'1']);
+                            }
+                        }else{
+                        	return response()->json(['status' => FALSE,'message' => 'Oops! Something went wrong. Please try again later.']);
+                        }
+                        
+                    }else
+                    {
+                    	return response()->json(['status' => FALSE,'message' => 'Oops! Something went wrong. Please try again later.']);
+                    }
+
+                    //-------------------------
+                    $return['file_id'] = $file_id;
+                    $return['status'] = TRUE;
+                    
+                    return $create_converted_file;
+
+	}	
+
+
 
 
 }

@@ -122,6 +122,7 @@
 <!-- <script src="{{ URL::asset('contactform/contactform.js')}}"></script> -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="{{ URL::asset('sweetalert/dist/sweetalert2.min.js')}}"></script>
+
 <script>
     var APP_URL = {!! json_encode(url('/')) !!};
 </script>
