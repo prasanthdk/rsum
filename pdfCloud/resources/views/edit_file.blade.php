@@ -49,9 +49,9 @@
                                     </a>
                                 </li>
                             </div>
-                            <div class="jq-tab-title" data-tab="2">
+                            <div class="jq-tab-title eraser" data-tab="2">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops eraser">
+                                    <a href="javascript:void(0)" class="drops ">
                                         <span>Erase </span>
                                         <img src="{{ asset('images/erase.png')}}" alt="Drive Icon">
 
@@ -59,9 +59,9 @@
                                 </li>
 
                             </div>
-                            <div class="jq-tab-title" data-tab="3">
+                            <div class="jq-tab-title hightlight" data-tab="3">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops">
+                                    <a href="javascript:void(0)" class="drops ">
                                         <span>Highlight </span>
                                         <img src="{{ asset('images/highlight.png')}}" alt="Drive Icon">
 
@@ -95,9 +95,9 @@
                                     </a>
                                 </li>
                             </div>
-                            <div class="jq-tab-title " data-tab="7">
+                            <div class="jq-tab-title blockout" data-tab="7">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops blockout" >
+                                    <a href="javascript:void(0)" class="drops " >
                                         <span>Blockout</span>
                                         <img src="{{ asset('images/highlight.png')}}" alt="Drive Icon">
 
@@ -134,9 +134,9 @@
                                 </li>
 
                             </div>
-                            <div class="jq-tab-title" data-tab="11">
+                            <div class="jq-tab-title pencil" data-tab="11">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops pencil">
+                                    <a href="javascript:void(0)" class="drops ">
                                         <span>Draw </span>
                                         <img src="{{ asset('images/draw.png')}}" alt="Drive Icon">
 
@@ -178,7 +178,7 @@
                         @foreach($temp_files as $key => $temp_files_list)
 
                         <div class="jq-tab-title page_title" data-tab="{{ $temp_files_list->id }}">
-                            <img src="{{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }}" class="img-responsive docimg"></div>
+                            <img src="{{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }}" class="img-responsive"></div>
 
                         @endforeach
                     </div>
@@ -242,7 +242,7 @@
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="javascript:void(0)" class="drops" onclick="drawLine()">
+                                <a href="javascript:void(0)" class="drops lineTool">
                                     <img src="{{ asset('images/line.png')}}" alt="Drive Icon">
                                     <span>Line </span>
 

@@ -146,10 +146,11 @@ $(document).ready(function(){
         y = 2;
 
         $('.page_title').on('click',function () {
+            x = "black",
+            y = 2;
             page_id = 'can_'+$(this).attr("data-tab");
             canvas = document.getElementById(page_id);
             ctx = canvas.getContext("2d");
-            y = 2;
             canvas.addEventListener("mousemove", function (e) {
                 findxy('move', e)
             }, false);
@@ -163,39 +164,41 @@ $(document).ready(function(){
                 findxy('out', e)
             }, false);
         });
+            page_id = $("canvas:first").attr('id');
+            canvas = document.getElementById(page_id);
+            ctx = canvas.getContext("2d");
+            canvas.addEventListener("mousemove", function (e) {
+                findxy('move', e)
+            }, false);
+            canvas.addEventListener("mousedown", function (e) {
+                findxy('down', e)
+            }, false);
+            canvas.addEventListener("mouseup", function (e) {
+                findxy('up', e)
+            }, false);
+            canvas.addEventListener("mouseout", function (e) {
+                findxy('out', e)
+            }, false);
 
-        page_id = $("canvas:first").attr('id');
-        canvas = document.getElementById(page_id);
-        ctx = canvas.getContext("2d");
-        canvas.addEventListener("mousemove", function (e) {
-            findxy('move', e)
-        }, false);
-        canvas.addEventListener("mousedown", function (e) {
-            findxy('down', e)
-        }, false);
-        canvas.addEventListener("mouseup", function (e) {
-            findxy('up', e)
-        }, false);
-        canvas.addEventListener("mouseout", function (e) {
-            findxy('out', e)
-        }, false);
+
 
 
         $('.pencil').on('click',function () {
             y = 2;
-            x = '#000';
+            x = '#000000';
+            ctx.globalAlpha =1;
             ctx.shadowColor = "transparent";
             ctx.beginPath();
             ctx.moveTo(prevX, prevY);
             ctx.stroke();
         });
 
-        $('.blockout').on('click',function () {
 
+        $('.blockout').on('click',function () {
             y = 12;
             x = '#000';
+            ctx.globalAlpha =1;
             ctx.shadowBlur = 8;
-            ctx.lineJoin = ctx.lineCap = 'square';
             ctx.shadowColor = 'rgb(0, 0, 0)';
             ctx.beginPath();
             ctx.moveTo(prevX, prevY);
@@ -205,7 +208,21 @@ $(document).ready(function(){
         $('.eraser').on('click',function () {
             x = '#ffffff';
             y = 14;
+            ctx.globalAlpha =1;
+
+
         });
+        $('.hightlight').on('click',function () {
+            ctx.globalAlpha = 0.2;
+            ctx.shadowColor = "transparent";
+            y = 15;
+            x = 'yellow';
+            ctx.beginPath();
+            ctx.moveTo(prevX, prevY);
+            ctx.lineTo(prevX, prevY);
+            ctx.stroke();
+        });
+
 
     function findxy(res, e) {
         if (res == 'down') {
@@ -248,5 +265,11 @@ $(document).ready(function(){
         ctx.stroke();
         ctx.closePath();
     }
+
+    $('.lineTool').on('click',function () {
+        init();
+
+    });
 });
+
 
