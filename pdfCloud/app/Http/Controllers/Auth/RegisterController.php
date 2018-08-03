@@ -91,11 +91,14 @@ class RegisterController extends Controller
         }
         //------------------------------------------------------
         try {
+
             $activation_code = str_random(30).time();
-            $user = User::create([
+
+            User::create([
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'activation_code' => $activation_code,
+            'status' => '2',
             ]);
             
         } catch (\Exception $exception) {
