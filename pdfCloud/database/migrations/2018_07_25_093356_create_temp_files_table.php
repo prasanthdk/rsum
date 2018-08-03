@@ -13,7 +13,7 @@ class CreateTempFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pdf_temp_files', function (Blueprint $table) {
+        Schema::create('temp_files', function (Blueprint $table) {
             $table->increments('id');
             $table->string('file_name');
             $table->enum('status',['1','2']);

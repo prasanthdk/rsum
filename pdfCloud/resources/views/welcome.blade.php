@@ -66,10 +66,10 @@
             <br><br>
             <div class="row">
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions"  data-action="compress"  data-toggle="modal"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions"  data-action="convert"  data-convert-to="text_pdf" data-toggle="modal"  data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/textpdf.png') }}" class="img-responsive"/>
-                            <h6>Compress PDF</h6>
+                            <h6>Text to PDF</h6>
                         </div>
                     </div>
                 </div>

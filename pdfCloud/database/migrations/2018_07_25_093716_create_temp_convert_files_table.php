@@ -13,7 +13,7 @@ class CreateTempConvertFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pdf_temp_convert_files', function (Blueprint $table) {
+        Schema::create('temp_convert_files', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('file_id');
             $table->string('convert_file_name');
