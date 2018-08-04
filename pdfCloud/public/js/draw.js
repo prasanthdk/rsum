@@ -134,6 +134,13 @@ init();
 */
 $(document).ready(function(){
 
+    $.ajax({
+        type: "POST",
+        url: APP_URL+'pageArray',
+        data: data,
+        success: success,
+        dataType: dataType
+    });
         var canvas, ctx, flag = false,
         prevX = 0,
         currX = 0,
@@ -141,22 +148,48 @@ $(document).ready(function(){
         currY = 0,
         dot_flag = false;
         var page_id ="";
-
+        var cPushArray = new Array();
+        var cStep = -1;
         var x = "black",
         y = 3;
 
-        $('.page_title').on('click',function () {
-            x = "black",
-            y = 3;
-            page_id = 'can_'+$(this).attr("data-tab");
+
+    $('.page_title').on('click',function () {
+
+        x = "black",
+        y = 3;
+        page_id = 'can_'+$(this).attr("data-tab");
+        canvas = document.getElementById(page_id);
+        ctx = canvas.getContext("2d");
+
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+            canvas.width = $("#parent").width();
+            canvas.height = $("#parent").height();
+
+    });
+        function init() {
+            page_id = $("canvas:first").attr('id');
             canvas = document.getElementById(page_id);
             ctx = canvas.getContext("2d");
+
             canvas.addEventListener("mousemove", function (e) {
                 findxy('move', e)
             }, false);
             canvas.addEventListener("mousedown", function (e) {
                 findxy('down', e)
             }, false);
+
             canvas.addEventListener("mouseup", function (e) {
                 findxy('up', e)
             }, false);
@@ -165,30 +198,12 @@ $(document).ready(function(){
             }, false);
             canvas.width = $("#parent").width();
             canvas.height = $("#parent").height();
+        }
 
-
-        });
-                page_id = $("canvas:first").attr('id');
-                canvas = document.getElementById(page_id);
-                ctx = canvas.getContext("2d");
-                canvas.addEventListener("mousemove", function (e) {
-                    findxy('move', e)
-                }, false);
-                    canvas.addEventListener("mousedown", function (e) {
-                        findxy('down', e)
-                    }, false);
-
-                canvas.addEventListener("mouseup", function (e) {
-                    findxy('up', e)
-                }, false);
-                canvas.addEventListener("mouseout", function (e) {
-                    findxy('out', e)
-                }, false);
-                canvas.width = $("#parent").width();
-                canvas.height = $("#parent").height();
-
-
+        /*****pencil******/
         $('.pencil').on('click',function () {
+
+            init();
             y = 3;
             x = '#000000';
             ctx.globalAlpha =1;
@@ -200,8 +215,9 @@ $(document).ready(function(){
             ctx.stroke();
         });
 
-
+        /*****blockout******/
         $('.blockout').on('click',function () {
+            init();
             y = 12;
             x = '#000';
             ctx.globalAlpha =1;
@@ -212,13 +228,13 @@ $(document).ready(function(){
             ctx.lineTo(prevX, prevY);
             ctx.stroke();
         });
+
         $('.eraser').on('click',function () {
             x = '#ffffff';
             y = 14;
             ctx.globalAlpha =1;
-
-
         });
+
         $('.hightlight').on('click',function () {
             ctx.globalAlpha = 0.2;
             ctx.shadowColor = "transparent";
@@ -230,6 +246,8 @@ $(document).ready(function(){
             ctx.stroke();
         });
 
+
+
         $('.circle').on('click',function () {
             var radius=8;
             x = "transparent";
@@ -238,13 +256,28 @@ $(document).ready(function(){
 
                 ctx.beginPath();
                 ctx.arc(e.clientX, e.clientY, radius, 0, Math.PI*2);
-                ctx.lineWidth = 2;
+                ctx.lineWidth = 1;
                 ctx.strokeStyle = "#000";
                 ctx.stroke();
             }
             canvas.addEventListener('mousedown',putPoint);
         });
+        $('.rectangle').on('click',function () {
 
+            x = "transparent";
+            var putPoint = function(e){
+                ctx.beginPath();
+                ctx.rect(e.clientX, e.clientY,10,10);
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = "#000";
+                ctx.stroke();
+            }
+            canvas.addEventListener('mousedown',putPoint);
+        });
+        $('.reset').on('click',function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        });
 
     function findxy(res, e) {
         if (res == 'down') {
@@ -264,6 +297,7 @@ $(document).ready(function(){
             }
         }
         if (res == 'up' || res == "out") {
+            if (res == 'up'){ cPush(); }
             flag = false;
         }
         if (res == 'move') {
@@ -308,6 +342,33 @@ $(document).ready(function(){
             ctx.stroke();
         };
     });
+    function cPush() {
+        cStep++;
+        if (cStep < cPushArray.length) { cPushArray.length = cStep; }
+        cPushArray.push(document.getElementById(page_id).toDataURL());
+        alert(cPushArray.length);
+    }
+
+    $('.undo').on('click',function () {
+        alert(JSON.stringify(cPushArray));
+        if (cStep > 0) {
+            cStep--;
+            var canvasPic = new Image();
+            canvasPic.src = cPushArray[cStep];
+            canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+        }
+    });
+
+
+    $('.redo').on('click',function () {        if (cStep < cPushArray.length-1) {
+            cStep++;
+            var canvasPic = new Image();
+            canvasPic.src = cPushArray[cStep];
+            canvasPic.onload = function () {ctx.drawImage(canvasPic, 0, 0); }
+        }
+    });
+
+
 });
 
 

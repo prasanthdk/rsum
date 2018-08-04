@@ -34,8 +34,10 @@
                         <div class="jq-tab-menu jqtab" >
                             <div class="jq-tab-title  " data-tab="1">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops">
-                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                    <a href="javascript:void(0)" class="drops undo">
+                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+
+                                    <a href="javascript:void(0)" class="drops redo">
                                         <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
@@ -124,7 +126,7 @@
                                 </li>
 
                             </div>
-                            <div class="jq-tab-title " data-tab="10">
+                            <div class="jq-tab-title reset" data-tab="10">
                                 <li>
                                     <a href="javascript:void(0)" class="drops" onclick="reset()">
                                         <span>Reset </span>
@@ -249,7 +251,7 @@
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="javascript:void(0)" class="drops">
+                                <a href="javascript:void(0)" class="drops rectangle">
                                     <img src="{{ asset('images/rectangle.png')}}" alt="Drive Icon">
                                     <span>Rectangle </span>
 
