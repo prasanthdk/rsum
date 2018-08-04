@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     var action = $(this).attr("data-action");
 
-    var convert_into =$(this).attr("data-convert-to");
+    var convert_into =$(this).attr("data-action-type");
 
     if(convert_into != '')
     {

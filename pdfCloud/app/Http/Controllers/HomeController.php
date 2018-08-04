@@ -81,6 +81,7 @@ class HomeController extends Controller
                     case 'png_pdf'://convert
                     case 'jpg_pdf'://convert
                     case 'text_pdf'://convert
+                     case "word_pdf":
 
                         $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
                         
@@ -112,40 +113,12 @@ class HomeController extends Controller
                         }
 
                     break;
-                    // case 'jpg_pdf':
-                    // $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
-                        
-                    //     if($validate_ext == "true")
-                    //     {
-                    //         $convert_into_image = FileConversionController::convert_into_image($request);
-
-                    //         if($convert_into_image != '' )
-                    //         {
-                    //              $response =  FileConversionController::convert($post_data,$convert_into_image);
-
-                    //                if($response){
-                    //                  $status = TRUE;
-                    //                  $message = "File converted successfully.";
-                    //                 }else{
-                    //                  $status = FALSE;
-                    //                  $message = "Oops! Something went wrong. Please try agin later.";
-                    //                 }
-                                
-                    //         }else{
-                    //             $status = FALSE;
-                    //             $message = "Oops! Something went wrong. Please try again later.";
-                    //         }
-                           
-                    //     }else{
-
-                    //         $status = FALSE;
-                    //         $message = ($validate_ext == "false") ? "Invalid file format.  Please upload a png file." : "Oops! Something went wrong. Please try again later.";
-                    //     }
-
-                    // break;
-                    // case 'text_pdf':
-
-                    // break;
+                    case "compress_pdf":
+                    // case "word_pdf":
+                    case "pdf_word":
+                    $status = FALSE;
+                            $message = "This area of funtionality in progress";
+                    break;
                     default:
                         $status = FALSE;
                         $message = "Invalid request received.";
@@ -239,7 +212,10 @@ class HomeController extends Controller
             $return  = "true";
         }else if($type == 'text_pdf' && $ext == 'txt'){
             $return  = "true";
+        }else if($type == 'word_pdf' && ($ext == 'doc' || $ext == 'docx')){
+            $return  = "true";
         }
+
         //------------
         return $return;
 

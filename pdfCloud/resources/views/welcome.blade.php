@@ -15,7 +15,7 @@
                         <p>PDFCloud is your all in one solution for editing and converting PDF documents.
                             Now offering unlimited cloud storage for all users. Click Upload Document to get started today.
                         </p>
-                        <a href="javascript:void(0);" class="btn btn-primary btn-lg pdf_home_actions"  data-action="edit"  data-convert-to="edit_pdf" id="myBtn" data-toggle="modal" data-target="#myModal"><i class="fa fa-cloud-upload"></i> Upload Document</a>
+                        <a href="javascript:void(0);" class="btn btn-primary btn-lg pdf_home_actions"  data-action="edit"  data-action-type="edit_pdf" id="myBtn" data-toggle="modal" data-target="#myModal"><i class="fa fa-cloud-upload"></i> Upload Document</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="convert" data-convert-to="png_pdf"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="convert" data-action-type="png_pdf"  data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/pngpdf.png') }}" class="img-responsive"/>
                             <h6>Convert Png to Pdf</h6>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="convert" data-convert-to="word_pdf" data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="convert" data-action-type="word_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/wordpdf.png') }}" class="img-responsive"/>
                             <h6>Convert Word to PDF </h6>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="convert" data-convert-to="pdf_word"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="convert" data-action-type="pdf_word"  data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/pdf.png') }}" class="img-responsive"/>
                             <h6>PDF to Word</h6>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions"  data-action="convert" data-convert-to="jpg_pdf"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions"  data-action="convert" data-action-type="jpg_pdf"  data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/jpgpdf.png') }}" class="img-responsive"/>
                             <h6>JPG to PDF</h6>
@@ -66,7 +66,7 @@
             <br><br>
             <div class="row">
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions"  data-action="convert"  data-convert-to="text_pdf" data-toggle="modal"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions"  data-action="convert"  data-action-type="text_pdf" data-toggle="modal"  data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/textpdf.png') }}" class="img-responsive"/>
                             <h6>Text to PDF</h6>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="compress"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="compress"  data-action-type="compress_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/pdf1.png') }}" class="img-responsive"/>
                             <h6>Compress PDF</h6>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="edit"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="edit"  data-action-type="edit_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/roatepdf.png') }}" class="img-responsive"/>
                             <h6>Rotate PDF</h6>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="edit"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="edit" data-action-type="edit_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/editpdf.png') }}" class="img-responsive"/>
                             <h6>Edit PDF</h6>
@@ -102,7 +102,7 @@
             <br><br>
             <div class="row">
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="edit"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="edit"  data-action-type="edit_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/form.png') }}" class="img-responsive"/>
                             <h6>Add fillabble
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="edit"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="edit" data-action-type="edit_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/signpdf.png') }}" class="img-responsive"/>
                             <h6>Sign PDF</h6>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="edit"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="edit" data-action-type="edit_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/watermark.png') }}" class="img-responsive"/>
                             <h6>Watermark
@@ -128,7 +128,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="circle-img pdf_home_actions" data-action="edit"  data-toggle="modal" data-target="#myModal">
+                    <div class="circle-img pdf_home_actions" data-action="edit" data-action-type="edit_pdf" data-toggle="modal" data-target="#myModal">
                         <div class="circle-content text-center">
                             <img src="{{ asset('images/reader.png') }}" class="img-responsive"/>
                             <h6>Highlight pdf</h6>
@@ -275,7 +275,7 @@
                         <p class="chs">OR</p>
                     </div>
                     <div class="image-upload-wrap">
-                        <input class="file-upload-input" type='file' onchange="readURL(this);"  name="_uploadFile" accept=".xlsx,.xls,image/*,.doc/*,.docx/*,.ppt,.pptx,.txt,.pdf" />
+                        <input class="file-upload-input" type='file' onchange="readURL(this);"  name="_uploadFile" accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf" />
                         <input type="hidden" name="pdf_cloud_action" id="pdf_cloud_action" value="">
                         <input type="hidden" name="pdf_cloud_Cto" id="pdf_cloud_Cto" value="">
                         <div class="drag-text">
