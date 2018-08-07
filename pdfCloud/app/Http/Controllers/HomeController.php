@@ -256,36 +256,39 @@ class HomeController extends Controller
         // $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
         //------------------------------------ end
         //--------------------------------------------convert a word file into html file
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        // $phpWord = new \PhpOffice\PhpWord\PhpWord();
         // $domPdfPath = base_path(). '\vendor\dompdf';
         // \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
         // \PhpOffice\PhpWord\Settings::setPdfRendererName('DOMPDF');
         // // die('aa');
 
-        $aaa = file_get_contents('test.txt');
-        // file_put_contents(base_path().'\resources\views\word_html\doc.blade.php', $aaa);
         //----------------------------------------------
-        // $phpWord = \PhpOffice\PhpWord\IOFactory::load(base_path().'\resources\views\word_html\test.txt');
-        $section = $phpWord->addSection();
-        $section->addText(nl2br($aaa));
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
-        $objWriter->save(base_path().'\resources\views\word_html\doc.blade.php');
-        // // // //----------------------------------------create pdf with converted html file
+        $phpWord = \PhpOffice\PhpWord\IOFactory::load(base_path().'\resources\views\word_html\test.docx');
+
+        // $phpWord->setDefaultFontName('courier');
+        // // $section = $phpWord->addSection();
+        // // $section->addText(nl2br($aaa));
+        // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+        // $objWriter->save(base_path().'\resources\views\word_html\doc.blade.php');
+        // // // // //----------------------------------------create pdf with converted html file
        
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path().'\resources\views\word_html\test.docx');
+        // $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path().'\resources\views\word_html\test.docx');
 
-        $pdf = PDF::loadView('word_html.doc');
-        $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
+        // $pdf = PDF::loadView('word_html.doc');
+        // $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
         //---------------------------------------------------convert word to pdf
-        // $domPdfPath = base_path(). '\vendor\dompdf\dompdf';
-        // \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
-        // \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+        $domPdfPath = base_path(). '\vendor\dompdf\dompdf';
+        \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+        \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+        $phpWord->setDefaultFontName('courier');
+        $section = $phpWord->addSection();
+        
+        $phpWord = \PhpOffice\PhpWord\IOFactory::load(storage_path('pdf').'/test.docx');
+        $pdfWriter = \PhpOffice\PhpWord\IOFactory::createWriter( $phpWord, 'PDF' );
+        $pdfWriter->save(storage_path('pdf').'/invoiceasdf.pdf',true);
 
-        // $phpWord = \PhpOffice\PhpWord\IOFactory::load(storage_path('pdf').'/test.txt');
-        // $pdfWriter = \PhpOffice\PhpWord\IOFactory::createWriter( $phpWord, 'PDF' );
-        // $pdfWriter->save(storage_path('pdf').'/invoiceasdf.pdf',true);
-
-        //------convert pdf to word
+        //------convert word to pdf
+        //-----------------------------------------------
 
     }
     public function PageArray(Request $request){

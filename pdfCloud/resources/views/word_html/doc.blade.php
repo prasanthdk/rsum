@@ -4,62 +4,27 @@
 <head>
 <meta charset="UTF-8" />
 <title>PHPWord</title>
+<meta name="author" content="Yuvaraj UI" />
 <style>
-* {font-family: courier; font-size: 10pt;}
+* {font-family: courier; font-size: 11pt;}
 a.NoteRef {text-decoration: none;}
 hr {height: 1px; padding: 0; margin: 1em 0; border: 0; border-top: 1px solid #CCC;}
 table {border: 1px solid black; border-spacing: 0px; width : 100%;}
 td {border: 1px solid black;}
+.Normal {margin-bottom: 10pt;}
+h2 {font-family: 'Times New Roman'; font-size: 18pt; font-weight: bold;}
+.Heading2Char {font-family: 'Times New Roman'; font-size: 18pt; font-weight: bold;}
+.NormalWeb {font-family: 'Times New Roman'; font-size: 12pt;}
+.BalloonText {font-family: 'Tahoma'; font-size: 8pt;}
+.BalloonTextChar {font-family: 'Tahoma'; font-size: 8pt;}
 </style>
 </head>
 <body>
-<p style="margin-top: 0; margin-bottom: 0;">[20-Sep-2017 15:57:17 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: fff in C:\xampp\htdocs\cornersAdmin\test2.php on line 3<br />
-<br />
-[20-Sep-2017 15:57:42 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: fff in C:\xampp\htdocs\cornersAdmin\test2.php on line 3<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaa in C:\xampp\htdocs\cornersAdmin\test2.php on line 4<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaad in C:\xampp\htdocs\cornersAdmin\test2.php on line 5<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaaasd in C:\xampp\htdocs\cornersAdmin\test2.php on line 6<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaaasd in C:\xampp\htdocs\cornersAdmin\test2.php on line 7<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaaas in C:\xampp\htdocs\cornersAdmin\test2.php on line 8<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaasdf in C:\xampp\htdocs\cornersAdmin\test2.php on line 9<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaadafg in C:\xampp\htdocs\cornersAdmin\test2.php on line 10<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaasdfa in C:\xampp\htdocs\cornersAdmin\test2.php on line 11<br />
-<br />
-[21-Sep-2017 07:36:03 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaasdf in C:\xampp\htdocs\cornersAdmin\test2.php on line 12<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaa in C:\xampp\htdocs\cornersAdmin\test2.php on line 4<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaad in C:\xampp\htdocs\cornersAdmin\test2.php on line 5<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaaasd in C:\xampp\htdocs\cornersAdmin\test2.php on line 6<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaaasd in C:\xampp\htdocs\cornersAdmin\test2.php on line 7<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaaas in C:\xampp\htdocs\cornersAdmin\test2.php on line 8<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaasdf in C:\xampp\htdocs\cornersAdmin\test2.php on line 9<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaadafg in C:\xampp\htdocs\cornersAdmin\test2.php on line 10<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaasdfa in C:\xampp\htdocs\cornersAdmin\test2.php on line 11<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: aaasdf in C:\xampp\htdocs\cornersAdmin\test2.php on line 12<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Notice: &nbsp;Undefined variable: dadf in C:\xampp\htdocs\cornersAdmin\test2.php on line 14<br />
-<br />
-[21-Sep-2017 07:38:00 Europe/Berlin] PHP Fatal error: &nbsp;Uncaught Error: Call to a member function asdf() on null in C:\xampp\htdocs\cornersAdmin\test2.php:14<br />
-Stack trace:<br />
-#0 {main}<br />
- &nbsp;thrown in C:\xampp\htdocs\cornersAdmin\test2.php on line 14<br />
-<br />
-</p>
+<p style="margin-top: 0; margin-bottom: 0;">Jjkshdfgjkhsdfjgkh</p>
+<p style="margin-top: 0; margin-bottom: 0;">Sasda</p>
+<p style="margin-top: 0; margin-bottom: 0;">Sd</p>
+<p style="margin-top: 0; margin-bottom: 0;">Asd</p>
+<p style="margin-top: 0; margin-bottom: 0;"><span style="color: #FFFEFD; font-weight: bold;">sdhfjahsdfjkhasjdkfhjksdh</span></p>
+<p style="margin-top: 0; margin-bottom: 0;"></p>
 </body>
 </html>
