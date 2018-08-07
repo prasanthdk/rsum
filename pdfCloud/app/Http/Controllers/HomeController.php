@@ -45,7 +45,6 @@ class HomeController extends Controller
     {
 
         $file_id = $key = $create_converted_file = $message = '';
-        $key = '0000....11112222';
 
         $user_auth = (Auth::check()) ? TRUE : FALSE;
 
@@ -156,7 +155,7 @@ class HomeController extends Controller
             $message = "No file submitted.";
         }
         //--------------------------------------------------------------------------------response
-        return response()->json(['status' => $status, 'file_id' => encrypt($file_id,$key),'message' => $message,'auth' => $user_auth,'action' => $post_data['pdf_cloud_action']]);
+        return response()->json(['status' => $status, 'file_id' => encrypt($file_id),'message' => $message,'auth' => $user_auth,'action' => $post_data['pdf_cloud_action']]);
 
     }
 
@@ -288,5 +287,13 @@ class HomeController extends Controller
 
         //------convert pdf to word
 
+    }
+    public function PageArray(Request $request){
+
+        $temp_files = TempConvertFiles::where('file_id','=',decrypt($request->file_id))
+            ->orderBy('created_at','asc')
+            ->get();
+
+        return response()->json($temp_files);
     }
 }

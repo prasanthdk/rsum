@@ -18,6 +18,7 @@
 Route::resource('/', 'HomeController');
 Route::post('/store', 'HomeController@store');
 Route::get('/{file_id}/edit', 'HomeController@edit');
+Route::post('pageArray', 'HomeController@PageArray');
 
 Auth::routes();
 
