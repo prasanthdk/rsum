@@ -90,7 +90,7 @@ class FileConversionController extends Controller
                                // $image->scaleImage(2550,3300);
                                 $image->setResolution(300,300);
                                 $image->readImage(public_path("uploads\original_file\\".$getfileName."[".$i."]"));
-                                $image->scaleImage(1500,1500);
+                                $image->scaleImage(866,0);
                                 //set new format
                                 $image->setImageFormat('png');
                                 $image->writeImage(public_path("uploads\convert_file\\".$image_name));

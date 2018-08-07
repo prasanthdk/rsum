@@ -61,7 +61,7 @@
                                 </li>
 
                             </div>
-                            <div class="jq-tab-title hightlight" data-tab="3">
+                            <div class="jq-tab-title highlight" data-tab="3">
                                 <li>
                                     <a href="javascript:void(0)" class="drops ">
                                         <span>Highlight </span>
@@ -171,7 +171,10 @@
     <div class="container-fluid">
         <div class="row pdf_content_viewer">
             <div class="jq-tab-wrapper" id="verticalTab">
-                <div class="col-sm-2 pdf_side_bar">
+                <style>
+
+                </style>
+                <div class="col-sm-2 pdf_side_bar pdf_side_bar_left">
                     <div class="pagetext">
                         <p>Page 1 of {{count($temp_files)}} </p>
                     </div>
@@ -185,16 +188,13 @@
                         @endforeach
                     </div>
                 </div>
-
                 <div class="col-sm-8 para">
                     <div class="jq-tab-content-wrapper ">
                         @foreach($temp_files as $key => $temp_files_list)
 
                         <div class="jq-tab-content {{ $key == 0 ? 'active' : '' }}" data-tab="{{ $temp_files_list->id }}">
-                            <div class="" id="parent" style="width: 1000px;height:1294px">
-                                <canvas id="can_{{ $temp_files_list->id }}" class="can" width="700" height="1200"
-                                            style="width:100%;height:100%;background: url({{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }})
-                    no-repeat center center;">
+                            <div class="" id="parent" style="">
+                                <canvas id="can_{{ $temp_files_list->id }}" class="can" width="866" height="1121">
                                 </canvas>
                             </div>
                         </div>
@@ -258,7 +258,7 @@
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="javascript:void(0)" class="drops">
+                                <a href="javascript:void(0)" class="drops tick_mark">
                                     <img src="{{ asset('images/check.png')}}" alt="Drive Icon">
                                     <span>Checkmark </span>
 
