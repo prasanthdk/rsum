@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Imagick;
 use Intervention\Image\Facades\Image;
 use Auth;
+use PDF;
 //use function MongoDB\BSON\toJSON;
 
 use App\Http\Controllers\FileConversionController;
@@ -80,9 +81,7 @@ class HomeController extends Controller
                     break;
                     case 'png_pdf'://convert
                     case 'jpg_pdf'://convert
-                    case 'text_pdf'://convert
-                     case "word_pdf":
-
+                    
                         $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
                         
                         if($validate_ext == "true")
@@ -113,9 +112,28 @@ class HomeController extends Controller
                         }
 
                     break;
-                    case "compress_pdf":
-                    // case "word_pdf":
+                    case 'text_pdf'://convert
+                        $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
+                    if($validate_ext == "true")
+                    {
+                        $convert_into_pdf = FileConversionController::convert_into_html($request);
+
+                        if($convert_into_pdf['status'] && $validate_ext == "true")
+                        {
+                        
+                            $status = TRUE;
+                            $message = "File converted successfully.";
+                            
+                        }
+
+                    }else{
+                        $status = FALSE;
+                        $message = "Invalid file format. Please upload a pdf file.";
+                    }
+                    break;
+                    case "word_pdf":
                     case "pdf_word":
+                    case "compress_pdf":
                     $status = FALSE;
                             $message = "This area of funtionality in progress";
                     break;
@@ -218,6 +236,57 @@ class HomeController extends Controller
 
         //------------
         return $return;
+
+    }
+
+    public function libreoffice(Request $request)
+    {
+
+        //convert text to pdf - successfull out put
+        // $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        // $content = file_get_contents('test.txt');
+        // $section = $phpWord->addSection();
+        // $section->addText(nl2br($section));
+        // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+        // $objWriter->save(base_path().'\resources\views\word_html\doc.blade.php');
+        
+       
+        // $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path().'\resources\views\word_html\test.docx');
+
+        // $pdf = PDF::loadView('word_html.doc');
+        // $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
+        //------------------------------------ end
+        //--------------------------------------------convert a word file into html file
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        // $domPdfPath = base_path(). '\vendor\dompdf';
+        // \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+        // \PhpOffice\PhpWord\Settings::setPdfRendererName('DOMPDF');
+        // // die('aa');
+
+        $aaa = file_get_contents('test.txt');
+        // file_put_contents(base_path().'\resources\views\word_html\doc.blade.php', $aaa);
+        //----------------------------------------------
+        // $phpWord = \PhpOffice\PhpWord\IOFactory::load(base_path().'\resources\views\word_html\test.txt');
+        $section = $phpWord->addSection();
+        $section->addText(nl2br($aaa));
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+        $objWriter->save(base_path().'\resources\views\word_html\doc.blade.php');
+        // // // //----------------------------------------create pdf with converted html file
+       
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path().'\resources\views\word_html\test.docx');
+
+        $pdf = PDF::loadView('word_html.doc');
+        $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
+        //---------------------------------------------------convert word to pdf
+        // $domPdfPath = base_path(). '\vendor\dompdf\dompdf';
+        // \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+        // \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+
+        // $phpWord = \PhpOffice\PhpWord\IOFactory::load(storage_path('pdf').'/test.txt');
+        // $pdfWriter = \PhpOffice\PhpWord\IOFactory::createWriter( $phpWord, 'PDF' );
+        // $pdfWriter->save(storage_path('pdf').'/invoiceasdf.pdf',true);
+
+        //------convert pdf to word
 
     }
 }

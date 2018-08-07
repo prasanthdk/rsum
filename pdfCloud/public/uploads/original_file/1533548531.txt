@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<mt-submission-response>
+    <messages count='1'>
+        <message>
+            <to>917401690678</to>
+            <messageId>0D00000042C715CD</messageId>
+            <status>0</status>
+            <remainingBalance>1.90400000</remainingBalance>
+            <messagePrice>0.00800000</messagePrice>
+            <network>40441</network>
+        </message>
+    </messages>
+</mt-submission-response>

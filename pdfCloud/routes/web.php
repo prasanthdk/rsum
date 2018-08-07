@@ -28,3 +28,5 @@ $this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name(
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/libreoffice', 'HomeController@libreoffice');

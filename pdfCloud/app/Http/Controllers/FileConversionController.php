@@ -7,6 +7,7 @@ use Imagick;
 use Illuminate\Support\Facades\Storage;
 use App\TempFiles;
 use App\TempConvertFiles;
+use PDF;
 
 class FileConversionController extends Controller
 {
@@ -89,7 +90,7 @@ class FileConversionController extends Controller
                                // $image->scaleImage(2550,3300);
                                 $image->setResolution(300,300);
                                 $image->readImage(public_path("uploads\original_file\\".$getfileName."[".$i."]"));
-                                $image->scaleImage(1000,0);
+                                $image->scaleImage(1500,1500);
                                 //set new format
                                 $image->setImageFormat('png');
                                 $image->writeImage(public_path("uploads\convert_file\\".$image_name));
@@ -113,6 +114,28 @@ class FileConversionController extends Controller
 
 	}	
 
+    public static function convert_into_html($request)
+    {
+
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $phpWord->setDefaultFontName('courier');
+        $content = file_get_contents($request->_uploadFile);//file_get_contents('test.txt');
+
+        $section = $phpWord->addSection();
+        $section->addText(nl2br(preg_replace('~(?<= ) ~', '&nbsp;',$content)));
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+        $objWriter->save(base_path().'\resources\views\word_html\doc.blade.php');
+        
+       
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path().'\resources\views\word_html\test.docx');
+
+        $pdf = PDF::loadView('word_html.doc');
+        $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
+
+         
+        $return['status'] = TRUE;
+        return $return;
+    }
 
 
 
