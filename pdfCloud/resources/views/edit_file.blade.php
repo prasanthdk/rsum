@@ -42,9 +42,9 @@
                                     </a>
                                 </li>
                             </div>
-                            <div class="jq-tab-title active" data-tab="1">
+                            <div class="jq-tab-title  text_box" data-tab="1">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops">
+                                    <a href="javascript:void(0)" class="drops ">
                                         <span>Text </span>
                                         <img src="{{ asset('images/text.png')}}" alt="Drive Icon">
 
@@ -223,7 +223,7 @@
 
                         <div id="tab01" class="tab-contents">
                             <li class="horz">
-                                <a href="javascript:void(0)" class="drops">
+                                <a href="javascript:void(0)" class="drops text_box">
                                     <img src="{{ asset('images/T1.png')}}" alt="Drive Icon">
                                     <span>Text </span>
 

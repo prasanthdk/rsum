@@ -151,6 +151,8 @@ $(document).ready(function(){
             draw(true);
         }
         if (e.type === 'mouseup' || e.type === "mouseout") {
+
+            if(e.type === 'mouseup') { cPush(); }
             mouseClicked = false;
         }
         if (e.type === 'mousemove') {
@@ -186,7 +188,7 @@ $(document).ready(function(){
     /*****rectangle******/
 
     $('.rectangle').on('click',function () {
-        fillStyle = "transparent";
+        canvas.removeEventListener("click", handleMouseEvent);
         var putPoint = function(e){
             prevX = currX;
             prevY = currY;
@@ -205,6 +207,53 @@ $(document).ready(function(){
     $('.tick_mark').on('click',function () {
 
 
+    });
+    $('.text_box').on('click',function () {
+        var font = '14px sans-serif',
+            hasInput = false;
+       var  onClick = function(e) {
+            if (hasInput) return;
+            prevX = currX;
+            prevY = currY;
+            currX = e.offsetX;
+            currY = e.offsetY;
+            addInput(currX, currY);
+        };
+        canvas.addEventListener("click", onClick, false);
+
+        function addInput(x, y) {
+
+            var input = document.createElement('input');
+
+            input.type = 'text';
+            input.style.position = 'fixed';
+            input.style.left = x  + 'px';
+            input.style.top = y + 'px';
+            input.style.color = '#000';
+            input.onkeydown = handleEnter;
+
+            document.body.appendChild(input);
+
+            input.focus();
+
+            hasInput = true;
+        }
+
+        function handleEnter(e) {
+            var keyCode = e.keyCode;
+            if (keyCode === 13) {
+                drawText(this.value, parseInt(this.style.left, 10), parseInt(this.style.top, 10));
+                document.body.removeChild(this);
+                hasInput = false;
+            }
+        }
+
+        function drawText(txt, x, y) {
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.font = font;
+            ctx.fillText(txt, x - 4, y - 4);
+        }
     });
 
     /*****lineTool******/
@@ -253,6 +302,39 @@ $(document).ready(function(){
             drawLine = false;
         });
     });
+
+    function cPush() {
+        cStep++;
+        if (cStep < cPushArray.length) { cPushArray.length = cStep; }
+        cPushArray.push(document.getElementById(page_id).toDataURL());
+    }
+
+    $('.undo').on('click',function () {
+        if (cStep > 0) {
+            cStep--;
+            //alert(cPushArray[cStep]);
+            var canvasPic = new Image();
+            canvasPic.src = cPushArray[cStep];
+            canvasPic.onload = function () {
+                ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight)
+                ctx.drawImage(canvasPic, 0, 0); }
+        }
+    });
+
+
+    $('.redo').on('click',function () {
+        if (cStep < cPushArray.length-1) {
+            cStep++;
+            var canvasPic = new Image();
+            canvasPic.src = cPushArray[cStep];
+            canvasPic.onload = function () {
+                ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight)
+                ctx.drawImage(canvasPic, 0, 0);
+            }
+        }
+    });
+
+
 
 });
 
