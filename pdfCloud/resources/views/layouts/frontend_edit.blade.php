@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6 col-lg-2">
                     <div class="circle-img helps">
-                        <div class="circle-content crl text-center">
+                        <div class="circle-content crl text-center save">
                             <img src="{{ asset('images/save.png')}}" class="img-responsive"/>
                             <h6>Save</h6>
                         </div>

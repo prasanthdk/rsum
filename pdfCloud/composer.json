@@ -12,6 +12,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "phpoffice/phpword": "^0.15.0",
+        "px-core/libre-office-converter": "dev-master",
         "twbs/bootstrap": "^4.1"
     },
     "require-dev": {

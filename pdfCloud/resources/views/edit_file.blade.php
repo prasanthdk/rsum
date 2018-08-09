@@ -2,26 +2,7 @@
 
 @section('content')
 
-<!--<main id="main">
-
-    <button class="btn btn-primary" id="save_image">Save <i class="fa fa-floppy-o "></i></button>
-    <button class="btn btn-default pen_tool" onclick="init()">Pen <i class="fa fa-pencil"></i></button>
-    <button class="btn btn-default text_tool" onclick="text()">Text <i class="fa fa-i-cursor "></i></button>
-    <button class="btn btn-default eraser_tool" id="white" onclick="erase('#ffffff')">Eraser <i class="fa fa-eraser "></i></button>
-    <button class="btn btn-default eraser_tool" id="white"onclick="reset()">Reset <i class="fa fa-eraser "></i></button>
-    <input type="text" id="color" onblur="color(this.val)" value='#000000'/>
-    <div class="container" style="overflow: scroll;height: 1110px;">
-        @foreach($temp_files as $key => $temp_files_list)
-        <div class="divider">
-            <canvas id="can_{{ $key }}" class="can" width="1000px" height="1294"
-                    style="background: url({{ asset('uploads/convert_file/'.$temp_files_list->convert_file_name) }})
-                    no-repeat center center;"></canvas>
-        </div>
-
-        @endforeach
-    </div>
-</main>
---><main id="main">
+<main id="main">
 
     <!--==========================
         Horizontal Tab
@@ -90,7 +71,7 @@
                             </div>
                             <div class="jq-tab-title" data-tab="6">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops">
+                                    <a href="javascript:void(0)" class="drops" data-toggle="modal" data-target="#myModal">
                                         <span>Water mark </span>
                                         <img src="{{ asset('images/water.png')}}" alt="Drive Icon">
 
@@ -128,7 +109,7 @@
                             </div>
                             <div class="jq-tab-title reset" data-tab="10">
                                 <li>
-                                    <a href="javascript:void(0)" class="drops" onclick="reset()">
+                                    <a href="javascript:void(0)" class="drops" >
                                         <span>Reset </span>
                                         <img src="{{ asset('images/reset.png')}}" alt="Drive Icon">
 
@@ -236,13 +217,13 @@
 
                                 </a>
                             </li>
-                            <li class="horz">
+                          <!--  <li class="horz">
                                 <a href="javascript:void(0)" class="drops">
                                     <img src="{{ asset('images/link.png')}}" alt="Drive Icon">
                                     <span>Link </span>
 
                                 </a>
-                            </li>
+                            </li>-->
                             <li class="horz">
                                 <a href="javascript:void(0)" class="drops lineTool">
                                     <img src="{{ asset('images/line.png')}}" alt="Drive Icon">
@@ -286,7 +267,7 @@
                                 </a>
                             </li>
                             <li class="horz">
-                                <a href="javascript:void(0)" class="drops">
+                                <a href="javascript:void(0)" class="drops pencil">
                                     <img src="{{ asset('images/pencil.png')}}" alt="Drive Icon">
                                     <span>Freehand </span>
 
@@ -312,8 +293,27 @@
             </div>
         </div>
     </div>
-    </div>
 
+<!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" >Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            composer require px-core/libre-office-converter "dev-master"
+        </div>
+    </div>
 </main>
 
 

@@ -20,6 +20,8 @@ $(document).ready(function(){
     var fillStyle = "black";
     var globalCompositeOperation = "source-over";
     var lineWidth = 2;
+    var font = '14px sans-serif',
+        hasInput = false;
 
     var page_id ="";
     var cPushArray = new Array();
@@ -46,7 +48,8 @@ $(document).ready(function(){
     page_id = $("canvas:first").attr('id');
     canvas = document.getElementById(page_id);
     ctx = canvas.getContext("2d");
-
+    ctx.fillStyle="#FFFFFF";
+    ctx.fillRect(0 , 0 , canvas.width, canvas.height);
     function init() {
         canvas.addEventListener("mousemove", handleMouseEvent);
         canvas.addEventListener("mousedown", handleMouseEvent);
@@ -68,6 +71,7 @@ $(document).ready(function(){
 
     /*****pencil******/
     $('.pencil').on('click',function () {
+        resetEvents();
         init();
         lineWidth = 2;
         fillStyle = '#000';
@@ -80,6 +84,7 @@ $(document).ready(function(){
 
     /*****highlight******/
     $('.highlight').on('click',function () {
+        resetEvents();
         init();
         ctx.globalAlpha = 0.2;
         ctx.shadowColor = "transparent";
@@ -93,6 +98,7 @@ $(document).ready(function(){
 
     /*****blockout******/
     $('.blockout').on('click',function () {
+        resetEvents();
         init();
         lineWidth = 12;
         fillStyle = '#000';
@@ -122,6 +128,7 @@ $(document).ready(function(){
         ctx.closePath();
     }
     $('.eraser').on('click',function () {
+        resetEvents();
         init()
         fillStyle = '#ffffff';
         lineWidth = 14;
@@ -129,17 +136,17 @@ $(document).ready(function(){
     });
 
 
-    function save() {
-        canvas.style.border = "2px solid";
-        canvasimg.width = canvas.width;
-        canvasimg.height = canvas.height;
-        var ctx2 = canvasimg.getContext("2d");
-        // comment next line to save the draw only
-        ctx2.drawImage(backgroundImage, 0, 0);
-        ctx2.drawImage(canvas, 0, 0);
-        finalImg.src = canvasimg.toDataURL();
-        finalImg.style.display = "inline";
-    }
+    $('.save').on('click',function () {
+
+           // only jpeg is supported by jsPDF
+            var imgData = canvas.toDataURL("image/jpeg", 1.0);
+
+            var pdf = new jsPDF();
+
+            pdf.addImage(imgData, 'JPEG', 0, 0);
+            pdf.save("download.pdf");
+
+    });
 
     function handleMouseEvent(e) {
         if (e.type === 'mousedown') {
@@ -169,9 +176,12 @@ $(document).ready(function(){
     /*****circle******/
 
     $('.circle').on('click',function () {
+        resetEvents();
+        canvas.addEventListener('mousedown',circlePutPoint);
+    });
+
+    function circlePutPoint(e) {
         var radius = 5;
-        fillStyle = "transparent";
-        var putPoint = function(e){
             prevX = currX;
             prevY = currY;
             currX = e.offsetX;
@@ -181,84 +191,105 @@ $(document).ready(function(){
             ctx.lineWidth = 2;
             ctx.strokeStyle = "#000";
             ctx.stroke();
-
-        };
-        canvas.addEventListener('mousedown',putPoint);
-    });
+            cPush();
+    }
     /*****rectangle******/
 
+    function putPoint(e) {
+        prevX = currX;
+        prevY = currY;
+        currX = e.offsetX;
+        currY = e.offsetY;
+        ctx.beginPath();
+        ctx.rect(currX, currY,10,10);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#000";
+        ctx.stroke();
+        cPush();
+    }
+
     $('.rectangle').on('click',function () {
-        canvas.removeEventListener("click", handleMouseEvent);
-        var putPoint = function(e){
-            prevX = currX;
-            prevY = currY;
-            currX = e.offsetX;
-            currY = e.offsetY;
-            ctx.beginPath();
-            ctx.rect(currX, currY,10,10);
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = "#000";
-            ctx.stroke();
-        };
+        resetEvents();
         canvas.addEventListener('mousedown',putPoint);
     });
-    /*****tick_mark******/
 
+    /*****tick_mark******/
     $('.tick_mark').on('click',function () {
 
 
     });
-    $('.text_box').on('click',function () {
-        var font = '14px sans-serif',
-            hasInput = false;
-       var  onClick = function(e) {
-            if (hasInput) return;
-            prevX = currX;
-            prevY = currY;
-            currX = e.offsetX;
-            currY = e.offsetY;
-            addInput(currX, currY);
-        };
-        canvas.addEventListener("click", onClick, false);
 
-        function addInput(x, y) {
+    /*****water_mark******/
+    $('.water_mark').on('click',function () {
+            var tempCanvas=document.createElement('canvas');
+            var tempCtx=tempCanvas.getContext('2d');
+            var cw,ch;
+            cw=tempCanvas.width=canvas.width;
+            ch=tempCanvas.height=canvas.height;
+            tempCtx.drawImage(canvas,0,0);
+            tempCtx.font="24px verdana";
+            var textWidth=tempCtx.measureText(text).width;
+            tempCtx.globalAlpha=.50;
+            tempCtx.fillStyle='white'
+            tempCtx.fillText(text,cw-textWidth-10,ch-20);
+            tempCtx.fillStyle='black'
+            tempCtx.fillText(text,cw-textWidth-10+2,ch-20+2);
+            // just testing by adding tempCanvas to document
+            document.body.appendChild(tempCanvas);
+            return(tempCanvas.toDataURL());
 
-            var input = document.createElement('input');
-
-            input.type = 'text';
-            input.style.position = 'fixed';
-            input.style.left = x  + 'px';
-            input.style.top = y + 'px';
-            input.style.color = '#000';
-            input.onkeydown = handleEnter;
-
-            document.body.appendChild(input);
-
-            input.focus();
-
-            hasInput = true;
-        }
-
-        function handleEnter(e) {
-            var keyCode = e.keyCode;
-            if (keyCode === 13) {
-                drawText(this.value, parseInt(this.style.left, 10), parseInt(this.style.top, 10));
-                document.body.removeChild(this);
-                hasInput = false;
-            }
-        }
-
-        function drawText(txt, x, y) {
-            ctx.textBaseline = 'top';
-            ctx.textAlign = 'left';
-            ctx.font = font;
-            ctx.fillText(txt, x - 4, y - 4);
-        }
     });
+
+    /******text_box******/
+    $('.text_box').on('click',function () {
+        resetEvents();
+        canvas.addEventListener("click", onClick, false);
+    });
+    function onClick(e) {
+
+        if (hasInput) return;
+        prevX = currX;
+        prevY = currY;
+        currX = e.offsetX;
+        currY = e.offsetY;
+        addInput(currX, currY);
+    }
+    function addInput(x, y) {
+
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.style.position = 'fixed';
+        input.style.left = x  + 'px';
+        input.style.top = y + 'px';
+        input.style.color = '#000';
+        input.onkeydown = handleEnter;
+        document.body.appendChild(input);
+        input.focus();
+        hasInput = true;
+    }
+
+    function handleEnter(e) {
+
+        var keyCode = e.keyCode;
+        if (keyCode === 13) {
+            drawText(this.value, parseInt(this.style.left, 10), parseInt(this.style.top, 10));
+            document.body.removeChild(this);
+            hasInput = false;
+        }
+    }
+
+    function drawText(txt, x, y) {
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = font;
+        ctx.fillText(txt, x, y);
+        cPush();
+    }
+    /******End text_box******/
 
     /*****lineTool******/
     $('.lineTool').on('click',function () {
-
+        resetEvents();
         var drawLine = false;
         var finalPos = {x:0, y:0};
         var startPos = {x:0, y:0};
@@ -282,10 +313,13 @@ $(document).ready(function(){
         });
 
         function line(cnvs) {
+
             cnvs.beginPath();
             cnvs.moveTo(startPos.x, startPos.y);
             cnvs.lineTo(finalPos.x, finalPos.y);
             cnvs.stroke();
+            cPush();
+
         }
         function clearCanvas(){
 
@@ -293,6 +327,7 @@ $(document).ready(function(){
         }
         $(window).mouseup(function() {
            // clearCanvas()
+
             if(finalPos.x!=0 &&finalPos.y!=0) {
                 line(ctx);
             }
@@ -334,6 +369,15 @@ $(document).ready(function(){
         }
     });
 
+    function resetEvents() {
+        canvas.removeEventListener("mousemove", handleMouseEvent);
+        canvas.removeEventListener("mousedown", handleMouseEvent);
+        canvas.removeEventListener("mouseup", handleMouseEvent);
+        canvas.removeEventListener("mouseout", handleMouseEvent);
+        canvas.removeEventListener('mousedown',putPoint);
+        canvas.removeEventListener("click", onClick);
+        canvas.removeEventListener('mousedown',circlePutPoint);
+    }
 
 
 });
