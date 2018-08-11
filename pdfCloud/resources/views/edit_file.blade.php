@@ -69,9 +69,9 @@
                                     </a>
                                 </li>
                             </div>
-                            <div class="jq-tab-title" data-tab="6">
-                                <li>
-                                    <a href="javascript:void(0)" class="drops" data-toggle="modal" data-target="#myModal">
+                            <div class="jq-tab-title" data-tab="6" data-toggle="modal" data-target="#myModal">
+                                <li >
+                                    <a href="javascript:void(0)" class="drops" >
                                         <span>Water mark </span>
                                         <img src="{{ asset('images/water.png')}}" alt="Drive Icon">
 
@@ -304,14 +304,22 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-
+                    <label>Enter text:</label>
+                    <input type="text" class="form-control" name="watermark_text" id="watermark_text" />
+                    <label>Size</label>
+                    <select class="form-control">
+                        <option value="">Select</option>
+                        <option value="Center">Center</option>
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                    </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" >Submit</button>
+                    <button type="button" class="btn btn-success water_mark" data-dismiss="modal" >Add</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            composer require px-core/libre-office-converter "dev-master"
+
         </div>
     </div>
 </main>

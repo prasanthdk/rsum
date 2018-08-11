@@ -13,7 +13,8 @@
         "laravelcollective/html": "^5.4",
         "phpoffice/phpword": "^0.15.0",
         "px-core/libre-office-converter": "dev-master",
-        "twbs/bootstrap": "^4.1"
+        "twbs/bootstrap": "^4.1",
+        "ncjoes/office-converter": "0.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

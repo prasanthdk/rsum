@@ -140,12 +140,9 @@ $(document).ready(function(){
 
            // only jpeg is supported by jsPDF
             var imgData = canvas.toDataURL("image/jpeg", 1.0);
-
             var pdf = new jsPDF();
-
             pdf.addImage(imgData, 'JPEG', 0, 0);
             pdf.save("download.pdf");
-
     });
 
     function handleMouseEvent(e) {
@@ -221,23 +218,37 @@ $(document).ready(function(){
 
     /*****water_mark******/
     $('.water_mark').on('click',function () {
-            var tempCanvas=document.createElement('canvas');
-            var tempCtx=tempCanvas.getContext('2d');
-            var cw,ch;
-            cw=tempCanvas.width=canvas.width;
-            ch=tempCanvas.height=canvas.height;
-            tempCtx.drawImage(canvas,0,0);
-            tempCtx.font="24px verdana";
-            var textWidth=tempCtx.measureText(text).width;
-            tempCtx.globalAlpha=.50;
-            tempCtx.fillStyle='white'
-            tempCtx.fillText(text,cw-textWidth-10,ch-20);
-            tempCtx.fillStyle='black'
-            tempCtx.fillText(text,cw-textWidth-10+2,ch-20+2);
-            // just testing by adding tempCanvas to document
-            document.body.appendChild(tempCanvas);
-            return(tempCanvas.toDataURL());
+        var watermark_text = $('#watermark_text').val();
 
+        $.ajax({
+            url: APP_URL+'/create_water_mark',
+            type: 'post',
+            data: {'watermark_text': watermark_text,'file_id': file_id},
+            success: function( data, textStatus, jQxhr ){
+
+                for(var i=0; i<data.length; i++ ){
+                    var c = document.getElementById("can_"+data[i]['id']);
+                    context = c.getContext("2d");
+                    var image = new Image();
+                    image.src = APP_URL+'/uploads/convert_file/'+data[i]['convert_file_name'];
+                    context.drawImage(image, 0, 0);
+                }
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+      /*  ctx.globalAlpha=0.5;
+        ctx.font = "82px sans-serif" ;
+        ctx.fillStyle = "#E0E0E0";
+        // get the metrics with font settings
+        var metrics = ctx.measureText("WaterMark Demo");
+        var width = metrics.width;
+        // height is font size
+        var height = 70;
+        ctx.fillText(watermark_text,canvas.width/2,height/2);
+        cPush();
+        resetEvents();*/
     });
 
     /******text_box******/

@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Imagick;
+
 use Illuminate\Support\Facades\Storage;
+
 use App\TempFiles;
+
 use App\TempConvertFiles;
+
 use PDF;
+
+use NcJoes\OfficeConverter\OfficeConverter;
 
 class FileConversionController extends Controller
 {
@@ -114,7 +121,7 @@ class FileConversionController extends Controller
 
 	}	
 
-    public static function convert_into_html($request)
+    public static function convert_into_html($request)//text to pdf
     {
 
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
@@ -137,6 +144,29 @@ class FileConversionController extends Controller
         return $return;
     }
 
+    public static function convert_into_pdf($request)
+    {
+
+        //---------------------------------------------------------------move uploaded file
+        $fileNameUnique = time();
+        $ext = $request->_uploadFile->getClientOriginalExtension();
+        $fileName = $fileNameUnique.'.'.$ext;
+        $uploadDir = storage_path('pdf');
+
+        if ($request->_uploadFile->move($uploadDir, $fileName)) {
+            $converter = new OfficeConverter(storage_path('pdf/').$fileName);
+            $convert = $converter->convertTo($fileNameUnique.'.pdf'); //generates pdf file in same directory as test-file.docx
+            
+            $return['status'] = TRUE;
+
+        }else{
+            $return['status'] = FALSE;
+        }
+
+        return $return;
+
+
+    }
 
 
 }

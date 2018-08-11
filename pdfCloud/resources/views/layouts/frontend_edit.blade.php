@@ -103,21 +103,21 @@
 <!--==========================
       Sub Menu
     ============================-->
-<section class="sub_menu text-center">
+<!--<section class="sub_menu text-center">
     <ul class="list-inline">
         <li><a href="#">About us </a></li>
         <li><a href="#">Privacy policy</a></li>
         <li><a href="#">Terms of use </a></li>
         <li><a href="#">Contact us </a></li>
     </ul>
-</section>
+</section>-->
 <!--==========================
   Sub Menu
 ============================-->
 <!-- ==========================
     Footer
   ============================-->
-<footer id="footer">
+<!--<footer id="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-3">
@@ -138,7 +138,7 @@
             </div>
         </div>
     </div>
-</footer>
+</footer>-->
 <!-- #footer -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
@@ -159,10 +159,16 @@
 <!-- Contact Form JavaScript File -->
 <!--<script src="{{ asset('contactform/contactform.js') }}"></script>
 --><script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- Template Main Javascript File -->
+<script src="{{ asset('js/jcanvas.min.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
 <script src="{{ asset('js/custom.js')}}"></script>
 <script type="text/javascript">
+    $( function() {
+        $( ".draggable" ).draggable();
+    } );
+
     $(document).ready(function()
     {
         //var myVar=setInterval(function(){myTimer()},1);
