@@ -292,5 +292,35 @@ class HomeController extends Controller
         return response()->json($temp_files);
     }
             //--------------------------------------------
-                
+    /**
+     * @param Request $request
+     */
+    public function createWaterMark(Request $request){
+
+        $temp_files = TempConvertFiles::where('file_id','=',decrypt($request->file_id))
+            ->orderBy('created_at','asc')
+            ->get();
+        foreach($temp_files as $key => $temp_files_list){
+
+            $img = Image::make(public_path('uploads/convert_file/'.$temp_files_list->convert_file_name));
+            $img->text($request->watermark_text, 500, 500, function($font) {
+
+                $font->file(public_path('font/Roboto-Black.ttf'));
+
+                $font->size(50);
+
+                $font->color(array(200, 200, 200, 0.7));
+
+                $font->align('center');
+
+                $font->valign('bottom');
+
+                $font->angle(45);
+
+            });
+            $img->save(public_path('uploads/convert_file/watermark'.$temp_files_list->id.'_'.time().'.png'));
+        }
+
+        // return response()->json($temp_files);
+    }
 }
