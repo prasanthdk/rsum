@@ -2142,7 +2142,23 @@ a:hover {
         margin-bottom: 5px;
         text-align: center;
     }
-
+    .plans_list_active
+    {
+        margin-top: 0px !important;        
+        position: relative !important;
+    }
+    .plans_list
+    {
+        margin-bottom: 10px;
+    }
+    #plans .panel
+    {
+        margin-bottom: 0px;
+    }
+    #plans .container
+     {
+        width: 100% !important;
+    }  
 }
 
 @media(min-width:768px) and (max-width: 993px) {
@@ -2165,6 +2181,18 @@ a:hover {
     .list-inline li {
         display: -webkit-inline-flex;
     }
+    #plans .container
+     {
+        width: 100% !important;
+    } 
+    .plans_list_active {
+        height: 100% !important;
+        background-color: #fff;
+        margin-top: -30px !important;
+        box-shadow: 1px 2px 3px 4px #c1c1c1;
+        position: relative !important;
+        z-index: 9;
+    } 
 }
 
 @media(max-width:966px) {
@@ -2232,12 +2260,19 @@ a:hover {
     margin: 0 auto;
     padding: 0 20px 0px;
 }
-
-.modal-header .close {
+.upldoc .modal-header
+{
+    display: block !important;
+    text-align: center;
+}
+.upldoc .modal-header .close {
     padding: 1rem;
     margin: -1.5rem -1rem -2rem auto;
     color: #bcbcbc;
     font-size: 36px;
+    position: absolute;
+    right: 23px;
+    top: 17px;
 }
 
 .modal-header {
@@ -3061,9 +3096,10 @@ padding-right: .5em !important;
   -webkit-transition: all .3s ease;
   background-color: #fbfcfd;
   padding: 30px;
+  border-radius: 0px !important;
 }
 .panel-pricing:hover {
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+  /*box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);*/
 }
 .panel-pricing .panel-heading {
   padding: 20px 10px;
@@ -3108,6 +3144,7 @@ padding-right: .5em !important;
 {
     font-size: 18px;
     margin-bottom: 7px;
+    font-weight: bold;
 }
 .plans_list
 {
@@ -3118,6 +3155,13 @@ padding-right: .5em !important;
     height: 510px;
     background-color: #fff;
     margin-top: -50px;
+    box-shadow: 1px 2px 3px 4px #c1c1c1;
+    position: absolute;
+    z-index: 9;
+}
+#plans .container
+{
+    width: 1000px;
 }
  .btn {
     background: linear-gradient(to bottom, #ff7701 100%, #ffe900 100%) !important;
@@ -3141,8 +3185,12 @@ padding-right: .5em !important;
 {
     list-style: circle;
 }
-.plans_list {
+/*.plans_list {
     padding: 2px;
+}*/
+.pack_disable .panel-pricing
+{
+    background-color: #fbfcfd;
 }
 .panel-pricing .list-group-item {
     color: #777777;
@@ -3173,11 +3221,6 @@ padding-right: .5em !important;
 {
     margin-bottom: 30px;
 }
-.plans_list .panel-pricing:hover
-{
-    transform: scale(1.1);
-    cursor: pointer;
-}
 .panel-pricing .list-group-item
 {
     display: list-item !important;
@@ -3187,6 +3230,10 @@ padding-right: .5em !important;
 {
     display: list-item !important;
     list-style-type: none !important;
+}
+.strikethrough
+{
+    color: #d40e0e;
 }
 /**Custom Checkbox **/
 /* This css is for normalizing styles. You can skip this. */
@@ -3233,7 +3280,7 @@ padding-right: .5em !important;
   left: 9px;
   width: 6px;
   height: 14px;
-  border: solid #333;
+  border: solid #cd282f;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -3431,8 +3478,8 @@ background-color: #f1f6f9;
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+   /* -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);*/
 }
 .panel-default {
     border-color: #ddd;
@@ -3562,4 +3609,21 @@ background-color: #f1f6f9;
 .dash_content .panel-body
 {
     background-color: #fff;
+}
+/***************vignesh Css ***********/
+div.progress-bar {
+    background-color: #1eafe0 !important;
+    background-image: none;
+    border-radius: 60px;
+    height: 5px;
+}
+div.progress-bar p {
+    color: transparent !important;
+}
+h4 p#demo {
+    color: #18ade0;
+    margin-top: -12px;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 13px;
 }

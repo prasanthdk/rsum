@@ -115,23 +115,10 @@
             </div>
             <div class="jq-tab-title active" data-tab="1">
             	<li class="sub_tab_list">
-                <a href="#" class="drops">
+                <a href="#" class="drops" data-toggle="collapse" data-target="#zxc">
                 	<span>Text </span>
                   <img src="images/text.png" alt="Drive Icon">                      
-                </a>
-                <div class="sub_tab" style="display: none;">
-                    <ul class="list-inline list-unstyled">
-                      <li>
-                        <a href="#">B</a>
-                      </li>
-                      <li>
-                        <a href="#">I</a>
-                      </li>
-                      <li>
-                        <a href="#">U</a>
-                      </li>
-                    </ul>
-                </div>
+                </a>                         
               </li>
             </div>
             <div class="jq-tab-title" data-tab="2">
@@ -252,6 +239,22 @@
     vertical List
     ============================-->
     <div class="container-fluid">
+          <div id="zxc" class="collapse">
+              <div class="row text-center" style="padding:0px 70px;">
+                <div class="col-md-2 col-sm-2">
+                  <select class="form-control">
+                      <option>Font 1</option>
+                      <option>Font 2</option>
+                      <option>Font 3</option>
+                      <option>Font 4</option>
+                      <option>Font 5</option>
+                  </select>
+                </div>
+                 <div class="col-md-1 col-sm-1"><i class="fa fa-bold"></i></div>
+                 <div class="col-md-1 col-sm-1"><i class="fa fa-italic"></i></div>
+                 <div class="col-md-1 col-sm-1"><i class="fa fa-underline"></i></div>               
+              </div>
+          </div> 
         	<div class="row pdf_content_viewer">
         		<div class="jq-tab-wrapper" id="verticalTab">
 					<div class="col-sm-2 pdf_side_bar">
