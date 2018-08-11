@@ -10,8 +10,13 @@ use Intervention\Image\Facades\Image;
 use Auth;
 use PDF;
 //use function MongoDB\BSON\toJSON;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 use App\Http\Controllers\FileConversionController;
+use pxCore\LibreOfficeConverterBundle\pxCoreLibreOfficeConverterBundle;
+
+use NcJoes\OfficeConverter\OfficeConverter;
 
 class HomeController extends Controller
 {
@@ -112,7 +117,7 @@ class HomeController extends Controller
 
                     break;
                     case 'text_pdf'://convert
-                        $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
+                    $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
                     if($validate_ext == "true")
                     {
                         $convert_into_pdf = FileConversionController::convert_into_html($request);
@@ -123,6 +128,10 @@ class HomeController extends Controller
                             $status = TRUE;
                             $message = "File converted successfully.";
                             
+                        }else
+                        {
+                            $status = FALSE;
+                            $message = "Oops! Something went wrong. Please try again later.";
                         }
 
                     }else{
@@ -131,10 +140,35 @@ class HomeController extends Controller
                     }
                     break;
                     case "word_pdf":
+                    $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
+                    if($validate_ext == "true"){
+
+                        $convert_into_pdf = FileConversionController::convert_into_pdf($request);
+
+                        if($convert_into_pdf['status'])
+                        {
+                        
+                            $status = TRUE;
+                            $message = "File converted successfully.";
+                            
+                        }else
+                        {
+                            $status = FALSE;
+                            $message = "Oops! Something went wrong. Please try again later.";
+                        }
+
+                    }else{
+                        $status = FALSE;
+                        $message = "Invalid file format. Please upload a pdf file.";
+                    }
+                            
+                    break;
+
+                    
                     case "pdf_word":
                     case "compress_pdf":
-                    $status = FALSE;
-                            $message = "This area of funtionality in progress";
+                            $status = FALSE;
+                            $message = "This area of funtionality in progress.";
                     break;
                     default:
                         $status = FALSE;
@@ -229,7 +263,7 @@ class HomeController extends Controller
             $return  = "true";
         }else if($type == 'text_pdf' && $ext == 'txt'){
             $return  = "true";
-        }else if($type == 'word_pdf' && ($ext == 'doc' || $ext == 'docx')){
+        }else if($type == 'word_pdf' && $ext == 'docx' || $ext == 'doc'){
             $return  = "true";
         }
 
@@ -240,55 +274,13 @@ class HomeController extends Controller
 
     public function libreoffice(Request $request)
     {
-
-        //convert text to pdf - successfull out put
-        // $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        // $content = file_get_contents('test.txt');
-        // $section = $phpWord->addSection();
-        // $section->addText(nl2br($section));
-        // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
-        // $objWriter->save(base_path().'\resources\views\word_html\doc.blade.php');
         
-       
-        // $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path().'\resources\views\word_html\test.docx');
+        //----------------------------------------------------------libreoffice
 
-        // $pdf = PDF::loadView('word_html.doc');
-        // $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
-        //------------------------------------ end
-        //--------------------------------------------convert a word file into html file
-        // $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        // $domPdfPath = base_path(). '\vendor\dompdf';
-        // \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
-        // \PhpOffice\PhpWord\Settings::setPdfRendererName('DOMPDF');
-        // // die('aa');
-
-        //----------------------------------------------
-        $phpWord = \PhpOffice\PhpWord\IOFactory::load(base_path().'\resources\views\word_html\test.docx');
-
-        // $phpWord->setDefaultFontName('courier');
-        // // $section = $phpWord->addSection();
-        // // $section->addText(nl2br($aaa));
-        // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
-        // $objWriter->save(base_path().'\resources\views\word_html\doc.blade.php');
-        // // // // //----------------------------------------create pdf with converted html file
-       
-        // $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path().'\resources\views\word_html\test.docx');
-
-        // $pdf = PDF::loadView('word_html.doc');
-        // $pdf->save(storage_path('pdf').'/invoiceasdf.pdf');
-        //---------------------------------------------------convert word to pdf
-        $domPdfPath = base_path(). '\vendor\dompdf\dompdf';
-        \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
-        \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
-        $phpWord->setDefaultFontName('courier');
-        $section = $phpWord->addSection();
+        $converter = new OfficeConverter(storage_path('pdf').'/test.docx');
+        $converter->convertTo('output-file.pdf'); //generates pdf file in same directory as test-file.docx
+        //--------------------------------------------------------------
         
-        $phpWord = \PhpOffice\PhpWord\IOFactory::load(storage_path('pdf').'/test.docx');
-        $pdfWriter = \PhpOffice\PhpWord\IOFactory::createWriter( $phpWord, 'PDF' );
-        $pdfWriter->save(storage_path('pdf').'/invoiceasdf.pdf',true);
-
-        //------convert word to pdf
-        //-----------------------------------------------
 
     }
     public function PageArray(Request $request){
@@ -299,4 +291,6 @@ class HomeController extends Controller
 
         return response()->json($temp_files);
     }
+            //--------------------------------------------
+                
 }
