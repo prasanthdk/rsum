@@ -302,25 +302,14 @@ class HomeController extends Controller
             ->get();
         foreach($temp_files as $key => $temp_files_list){
 
-            $img = Image::make(public_path('uploads/convert_file/'.$temp_files_list->convert_file_name));
-            $img->text($request->watermark_text, 500, 500, function($font) {
+            $image = Image::make($request->water_dataURL[$key]);
+            $image->save(public_path('uploads/convert_file/').'WM_'.$temp_files_list->id.'.png');
 
-                $font->file(public_path('font/Roboto-Black.ttf'));
-
-                $font->size(50);
-
-                $font->color(array(200, 200, 200, 0.7));
-
-                $font->align('center');
-
-                $font->valign('bottom');
-
-                $font->angle(45);
-
-            });
-            $img->save(public_path('uploads/convert_file/watermark'.$temp_files_list->id.'_'.time().'.png'));
+            $create_converted_file = TempConvertFiles::create(['file_id'=>decrypt($request->file_id),'convert_file_name'=>'WM_'.$temp_files_list->id.'.png','status'=>'1']);
         }
-
-        // return response()->json($temp_files);
+        $temp_files_res = TempConvertFiles::where('file_id','=',decrypt($request->file_id))
+            ->orderBy('created_at','asc')
+            ->get();
+         return $temp_files_res;
     }
 }

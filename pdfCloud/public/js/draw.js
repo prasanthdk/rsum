@@ -219,13 +219,37 @@ $(document).ready(function(){
     /*****water_mark******/
     $('.water_mark').on('click',function () {
         var watermark_text = $('#watermark_text').val();
+        var page_id = $('#page_id').val();
+        var page_id_array = page_id.slice(0, -1).split(',');
+        var canvas_water,ctx_water,metrics,width = "";
+        var dataURL = [];
+        var data = [];
 
+        for( var i=0; i<page_id_array.length; i++ ){
+
+            canvas_water = document.getElementById('can_'+page_id_array[i]);
+            ctx_water = canvas_water.getContext("2d");
+
+            ctx_water.globalAlpha=0.5;
+            ctx_water.font = "82px sans-serif" ;
+            ctx_water.fillStyle = "#E0E0E0";
+             metrics = ctx.measureText(watermark_text);
+             width = metrics.width;
+            // height is font size
+             height = 70;
+            // change the origin coordinate to the middle of the context
+            ctx_water.translate(canvas.width/2, canvas.height/2);
+            // rotate the context (so it's rotated around its center)
+            ctx_water.rotate(-Math.atan(canvas.height/canvas.width));
+            // as the origin is now at the center, just need to center the text
+            ctx_water.fillText(watermark_text,-width/2,height/2);
+            data[i]= canvas_water.toDataURL();
+        }
         $.ajax({
             url: APP_URL+'/create_water_mark',
             type: 'post',
-            data: {'watermark_text': watermark_text,'file_id': file_id},
+            data: {'water_dataURL': data,'file_id': file_id},
             success: function( data, textStatus, jQxhr ){
-
                 for(var i=0; i<data.length; i++ ){
                     var c = document.getElementById("can_"+data[i]['id']);
                     context = c.getContext("2d");
@@ -238,17 +262,10 @@ $(document).ready(function(){
                 console.log( errorThrown );
             }
         });
-      /*  ctx.globalAlpha=0.5;
-        ctx.font = "82px sans-serif" ;
-        ctx.fillStyle = "#E0E0E0";
-        // get the metrics with font settings
-        var metrics = ctx.measureText("WaterMark Demo");
-        var width = metrics.width;
-        // height is font size
-        var height = 70;
-        ctx.fillText(watermark_text,canvas.width/2,height/2);
-        cPush();
-        resetEvents();*/
+
+
+//  cPush();
+        resetEvents();
     });
 
     /******text_box******/

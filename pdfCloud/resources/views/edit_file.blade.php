@@ -171,8 +171,9 @@
                 </div>
                 <div class="col-sm-8 para">
                     <div class="jq-tab-content-wrapper ">
+                        {!! $page_id = ""; !!}
                         @foreach($temp_files as $key => $temp_files_list)
-
+                        @php $page_id .= $temp_files_list->id.","; @endphp
                         <div class="jq-tab-content {{ $key == 0 ? 'active' : '' }}" data-tab="{{ $temp_files_list->id }}">
                             <div class="" id="parent" style="">
                                 <canvas id="can_{{ $temp_files_list->id }}" class="can" width="866" height="1121">
@@ -180,6 +181,7 @@
                             </div>
                         </div>
                         @endforeach
+                        <input id="page_id" type="hidden" value="{{ $page_id }}"/>
 
                     </div>
                 </div>

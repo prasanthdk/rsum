@@ -1,2 +1,0 @@
-[21-Sep-2017 09:43:37 Asia/Kolkata] PHP Notice:  Undefined variable: sdfasdf in /var/www/vhosts/gpsservice.pickzy.com/tempserver/corners/test.php on line 5
-[21-Sep-2017 11:59:14 Asia/Kolkata] PHP Notice:  Undefined variable: sdfasdf in /var/www/vhosts/gpsservice.pickzy.com/tempserver/corners/test.php on line 5
