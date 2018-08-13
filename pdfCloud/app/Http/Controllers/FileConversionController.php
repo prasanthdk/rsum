@@ -102,7 +102,7 @@ class FileConversionController extends Controller
                                 $image->setImageFormat('png');
                                 $image->writeImage(public_path("uploads\convert_file\\".$image_name));
 
-                                $create_converted_file = TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'status'=>'1']);
+                                $create_converted_file = TempConvertFiles::create(['file_id'=>$file_id,'convert_file_name'=>$image_name,'convert_file_type'=>'1','status'=>'1']);
                             }
                         }else{
                         	return response()->json(['status' => FALSE,'message' => 'Oops! Something went wrong. Please try again later.']);

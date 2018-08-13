@@ -212,7 +212,9 @@ class HomeController extends Controller
      */
     public function edit($file_id)
     {
-        $temp_files = TempConvertFiles::where('file_id','=',decrypt($file_id))->orderBy('created_at','asc')->get();
+        $temp_files = TempConvertFiles::where('file_id','=',decrypt($file_id))
+            ->where('convert_file_type','=','1')
+            ->orderBy('created_at','asc')->get();
 
        return view('edit_file',compact('temp_files'));
 
@@ -286,6 +288,7 @@ class HomeController extends Controller
     public function PageArray(Request $request){
 
         $temp_files = TempConvertFiles::where('file_id','=',decrypt($request->file_id))
+            ->where('convert_file_type','=','1')
             ->orderBy('created_at','asc')
             ->get();
 
@@ -305,11 +308,14 @@ class HomeController extends Controller
             $image = Image::make($request->water_dataURL[$key]);
             $image->save(public_path('uploads/convert_file/').'WM_'.$temp_files_list->id.'.png');
 
-            $create_converted_file = TempConvertFiles::create(['file_id'=>decrypt($request->file_id),'convert_file_name'=>'WM_'.$temp_files_list->id.'.png','status'=>'1']);
+            TempConvertFiles::create(['file_id'=>decrypt($request->file_id),'convert_file_name'=>'WM_'.$temp_files_list->id.'.png',
+                'convert_file_name'=>'2','status'=>'1']);
         }
         $temp_files_res = TempConvertFiles::where('file_id','=',decrypt($request->file_id))
+            ->where('convert_file_type','=','2')
             ->orderBy('created_at','asc')
             ->get();
-         return $temp_files_res;
+
+        return response()->json($temp_files_res);
     }
 }
