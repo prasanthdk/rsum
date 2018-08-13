@@ -120,7 +120,8 @@ class HomeController extends Controller
                     $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
                     if($validate_ext == "true")
                     {
-                        $convert_into_pdf = FileConversionController::convert_into_html($request);
+                        // $convert_into_pdf = FileConversionController::convert_into_html($request);
+                        $convert_into_pdf = FileConversionController::txt_convert_into_pdf($request);
 
                         if($convert_into_pdf['status'] && $validate_ext == "true")
                         {
@@ -143,7 +144,7 @@ class HomeController extends Controller
                     $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
                     if($validate_ext == "true"){
 
-                        $convert_into_pdf = FileConversionController::convert_into_pdf($request);
+                        $convert_into_pdf = FileConversionController::doc_convert_into_pdf($request);
 
                         if($convert_into_pdf['status'])
                         {
@@ -166,6 +167,30 @@ class HomeController extends Controller
 
                     
                     case "pdf_word":
+                    // $validate_ext = $this->check_file_extension($ext,$post_data['pdf_cloud_Cto']);
+                    // if($validate_ext == "true"){
+
+                    //     $convert_into_pdf = FileConversionController::pdf_convert_into_doc($request);
+
+                    //     if($convert_into_pdf['status'])
+                    //     {
+                        
+                    //         $status = TRUE;
+                    //         $message = "File converted successfully.";
+                            
+                    //     }else
+                    //     {
+                    //         $status = FALSE;
+                    //         $message = "Oops! Something went wrong. Please try again later.";
+                    //     }
+
+                    // }else{
+                    //     $status = FALSE;
+                    //     $message = "Invalid file format. Please upload a pdf file.";
+                    // }
+                            $status = FALSE;
+                            $message = "This area of funtionality in progress.";
+                    break;
                     case "compress_pdf":
                             $status = FALSE;
                             $message = "This area of funtionality in progress.";
