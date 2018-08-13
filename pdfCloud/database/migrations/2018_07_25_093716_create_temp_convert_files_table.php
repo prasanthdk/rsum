@@ -17,7 +17,7 @@ class CreateTempConvertFilesTable extends Migration
             $table->increments('id');
             $table->integer('file_id');
             $table->string('convert_file_name');
-            $table->string('convert_file_type');
+            $table->string('convert_file_wm')->nullable();
             $table->enum('status',['1','2']);
             $table->timestamps();
         });

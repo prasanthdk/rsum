@@ -18,6 +18,8 @@ use pxCore\LibreOfficeConverterBundle\pxCoreLibreOfficeConverterBundle;
 
 use NcJoes\OfficeConverter\OfficeConverter;
 
+use App\UserConvertedFiles;
+
 class HomeController extends Controller
 {
     /**
@@ -72,7 +74,7 @@ class HomeController extends Controller
                         $convert_into_image = FileConversionController::convert_into_image($request);
                         if($convert_into_image['status'] && $validate_ext == "true")
                         {
-                            $file_id = $convert_into_image->file_id;
+                            $file_id = (Auth::check()) ? $convert_into_image->convert_file : $convert_into_image->file_id;
                             $status = TRUE;
                             
                         }
@@ -237,13 +239,20 @@ class HomeController extends Controller
      */
     public function edit($file_id)
     {
-        $temp_files = TempConvertFiles::where('file_id','=',decrypt($file_id))
-            ->where('convert_file_type','=','1')
+
+        if(Auth::check()){
+
+        $temp_files = UserConvertedFiles::where('convert_file','=',decrypt($file_id))
             ->orderBy('created_at','asc')->get();
+
+        }else{
+            $temp_files = TempConvertFiles::where('file_id','=',decrypt($file_id))
+            ->orderBy('created_at','asc')->get();
+        }
 
        return view('edit_file',compact('temp_files'));
 
-       //return response()->file(public_path('uploads/original_file/1532522150.pdf'));
+       
     }
 
     /**
@@ -312,10 +321,18 @@ class HomeController extends Controller
     }
     public function PageArray(Request $request){
 
-        $temp_files = TempConvertFiles::where('file_id','=',decrypt($request->file_id))
-            ->where('convert_file_type','=','1')
+        
+
+        if(Auth::check()){
+
+        $temp_files = UserConvertedFiles::where('convert_file','=',decrypt($request->file_id))
+            ->orderBy('created_at','asc')->get();
+            
+        }else{
+           $temp_files = TempConvertFiles::where('file_id','=',decrypt($request->file_id))
             ->orderBy('created_at','asc')
             ->get();
+        }
 
         return response()->json($temp_files);
     }

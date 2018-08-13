@@ -128,7 +128,7 @@ $(document).ready(function() {
                     });
                    
                 }else if(data.auth){
-                    window.location.href = APP_URL + "/png_to_pdf";
+                    window.location.href = APP_URL + "/platform.html";
                 }
             }else
             {
